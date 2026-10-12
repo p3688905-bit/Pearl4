@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>買櫝還珠・價值之辨 ── 韓非子的商業哲學課</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-tc@5/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-tc@5/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-tc@5/700.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-tc@5/900.css">
+<style>
+/* ============ 基礎與配色 ============ */
+:root{
+  --paper:#FCF7EA;
+  --paper2:#F6EDD8;
+  --paper3:#FFFDF6;
+  --ink:#2B2620;
+  --ink2:#5B5145;
+  --ink3:#8A7C6A;
+  --cinnabar:#B4231F;
+  --cinnabar2:#D9463A;
+  --cinnabar-d:#8A1916;
+  --indigo:#23415C;
+  --indigo2:#3C6488;
+  --jade:#3F7A5E;
+  --gold:#C0952B;
+  --gold2:#E0BE5E;
+  --line:rgba(43,38,32,.14);
+  --line2:rgba(192,149,43,.35);
+  --shadow:0 10px 30px rgba(90,66,30,.12);
+  --shadow2:0 4px 14px rgba(90,66,30,.10);
+  --fs:16px;
+  --r:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Noto Serif TC","Songti TC","Times New Roman",serif;
+  font-size:var(--fs);line-height:1.95;letter-spacing:.02em;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.13'/%3E%3C/svg%3E");
+}
+img,svg{max-width:100%}
+a{color:var(--cinnabar);text-decoration:none}
+::selection{background:var(--gold2);color:#3a2c00}
+
+/* ============ 頂欄 ============ */
+.topbar{
+  position:sticky;top:0;z-index:60;backdrop-filter:blur(8px);
+  background:rgba(252,247,234,.94);border-bottom:1px solid var(--line2);
+}
+.topbar .in{max-width:1200px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:18px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.14em;color:var(--cinnabar-d)}
+.brand .seal-mini{width:30px;height:30px;border-radius:6px;background:var(--cinnabar);color:#FFF6E8;
+  display:grid;place-items:center;font-size:15px;box-shadow:0 2px 6px rgba(180,35,31,.35)}
+.navlinks{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.navlinks a{
+  padding:6px 12px;border-radius:999px;color:var(--ink2);font-size:.9rem;font-weight:700;
+  transition:.25s;border:1px solid transparent;white-space:nowrap
+}
+.navlinks a:hover{color:var(--cinnabar);background:rgba(180,35,31,.07)}
+.navlinks a.active{color:#fff;background:var(--cinnabar);border-color:var(--cinnabar-d)}
+.tools{display:flex;gap:6px;align-items:center}
+.tbtn{
+  min-width:30px;height:30px;padding:0 6px;border:1px solid var(--line2);background:var(--paper3);color:var(--ink2);
+  border-radius:8px;cursor:pointer;font-family:inherit;font-weight:700;font-size:.85rem;transition:.2s
+}
+.tbtn:hover{border-color:var(--cinnabar);color:var(--cinnabar)}
+.progress{height:3px;background:linear-gradient(90deg,var(--gold2),var(--cinnabar));width:0%;transition:width .1s}
+.burger{display:none}
+
+/* ============ 版面 ============ */
+main{position:relative;z-index:1}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+section{padding:60px 0;position:relative}
+.sec-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:26px}
+.sec-no{
+  flex:0 0 auto;width:52px;height:52px;border-radius:10px;background:var(--cinnabar);color:#FFF6E8;
+  display:grid;place-items:center;font-size:24px;font-weight:900;box-shadow:0 6px 16px rgba(180,35,31,.28);
+  position:relative
+}
+.sec-no::after{content:"";position:absolute;inset:4px;border:1px solid rgba(255,240,220,.45);border-radius:7px}
+.sec-head h2{margin:2px 0 4px;font-size:1.7rem;font-weight:900;letter-spacing:.08em;color:var(--ink);line-height:1.5}
+.sec-head p{margin:0;color:var(--ink2);font-size:.95rem}
+.rule{height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin:22px 0 26px}
+
+.card{
+  background:linear-gradient(180deg,var(--paper3),var(--paper2));
+  border:1px solid var(--line2);border-radius:var(--r);padding:24px;box-shadow:var(--shadow2);position:relative
+}
+.card::before,.card::after{
+  content:"";position:absolute;width:18px;height:18px;border:2px solid var(--gold);opacity:.55
+}
+.card::before{top:8px;left:8px;border-right:0;border-bottom:0;border-radius:4px 0 0 0}
+.card::after{bottom:8px;right:8px;border-left:0;border-top:0;border-radius:0 0 4px 0}
+.card h3{letter-spacing:.08em}
+
+/* ============ HERO ============ */
+.hero{padding:48px 0 26px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:10px;padding:6px 14px;border-radius:999px;
+  background:rgba(35,65,92,.08);border:1px solid rgba(35,65,92,.2);color:var(--indigo);
+  font-size:.82rem;font-weight:700;letter-spacing:.1em
+}
+.hero h1{
+  font-size:clamp(2.5rem,7vw,4.4rem);line-height:1.18;margin:18px 0 8px;font-weight:900;letter-spacing:.1em;
+  color:var(--cinnabar-d);text-shadow:0 2px 0 rgba(255,255,255,.6)
+}
+.hero h1 span{color:var(--indigo)}
+.hero .sub{font-size:1.03rem;color:var(--ink2);max-width:36em}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;align-items:center}
+.chip{
+  padding:6px 13px;border-radius:8px;background:#fff;border:1px solid var(--line2);font-size:.82rem;
+  color:var(--ink2);font-weight:700
+}
+.chip b{color:var(--cinnabar)}
+.hero-art{position:relative}
+.hero-art .frame{
+  background:radial-gradient(120% 100% at 50% 0%,#FFFDF6,#F3E7CE);
+  border:1px solid var(--line2);border-radius:18px;padding:12px;box-shadow:var(--shadow)
+}
+.hero-art .frame svg{display:block;width:100%;height:auto;border-radius:10px}
+.float-seal{
+  position:absolute;right:-8px;bottom:-14px;width:88px;height:88px;border-radius:12px;background:var(--cinnabar);
+  color:#FFF6E8;display:grid;place-items:center;text-align:center;font-weight:900;line-height:1.2;font-size:19px;
+  box-shadow:0 10px 24px rgba(180,35,31,.35);transform:rotate(-6deg);letter-spacing:.05em;
+  border:3px solid rgba(255,246,232,.35)
+}
+.hero-q{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
+.hq{
+  background:#fff;border:1px solid var(--line2);border-left:5px solid var(--cinnabar);border-radius:12px;
+  padding:16px 18px;box-shadow:var(--shadow2);transition:.3s;cursor:pointer
+}
+.hq:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.hq b{display:block;color:var(--cinnabar-d);font-size:.86rem;letter-spacing:.1em;margin-bottom:4px}
+.hq p{margin:0;font-size:.92rem;color:var(--ink2);line-height:1.75}
+.mini-stamps{display:flex;gap:6px;margin-left:auto}
+.mini-stamps .ms{
+  width:30px;height:30px;border-radius:7px;border:1.5px dashed rgba(180,35,31,.4);color:rgba(180,35,31,.45);
+  display:grid;place-items:center;font-weight:900;font-size:14px;background:rgba(255,255,255,.6);transition:.3s
+}
+.mini-stamps .ms.got{background:var(--cinnabar);color:#FFF6E8;border:1.5px solid var(--cinnabar-d);
+  animation:stampIn .5s cubic-bezier(.2,1.4,.4,1)}
+
+/* ============ 原文卷軸 ============ */
+.scroll-box{
+  background:linear-gradient(180deg,#FFFEF8,#F8F0DC);border-radius:6px;padding:34px 28px;position:relative;
+  box-shadow:var(--shadow);border-top:1px solid var(--line2);border-bottom:1px solid var(--line2)
+}
+.scroll-box::before,.scroll-box::after{
+  content:"";position:absolute;left:-14px;right:-14px;height:26px;border-radius:13px;
+  background:linear-gradient(180deg,#8E5A2B,#C98F4E 45%,#7A4A22);box-shadow:0 4px 10px rgba(90,60,20,.3)
+}
+.scroll-box::before{top:-14px}
+.scroll-box::after{bottom:-14px}
+.yw-line{
+  padding:12px 16px;border-radius:10px;cursor:pointer;transition:.3s;border:1px solid transparent;
+  font-size:1.2rem;font-weight:700;letter-spacing:.05em;line-height:2.05;color:var(--ink)
+}
+.yw-line:hover{background:rgba(192,149,43,.12)}
+.yw-line.on{background:linear-gradient(90deg,rgba(180,35,31,.10),rgba(192,149,43,.10));border-color:var(--line2)}
+.yw-line .mark{color:var(--cinnabar);font-weight:900;margin-right:8px}
+.yw-trans{
+  max-height:0;overflow:hidden;transition:max-height .5s ease;
+  color:var(--ink2);font-size:.97rem;background:rgba(255,255,255,.65);border-radius:10px;margin:0 4px
+}
+.yw-trans .inner{padding:14px 18px}
+.yw-trans em{color:var(--indigo);font-style:normal;font-weight:700}
+.yw-note{margin-top:8px;padding-top:8px;border-top:1px dashed var(--line2);font-size:.88rem;color:var(--ink3)}
+.yw-src{text-align:right;color:var(--ink3);font-size:.9rem;margin-top:16px;letter-spacing:.08em}
+.word-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:16px}
+.word{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;transition:.25s}
+.word:hover{border-color:var(--gold);transform:translateY(-3px)}
+.word b{color:var(--cinnabar);font-size:1.1rem;display:block}
+.word i{font-style:normal;color:var(--ink3);font-size:.78rem;display:block;margin:2px 0 4px}
+.word span{font-size:.88rem;color:var(--ink2)}
+
+/* ============ 概念對照 ============ */
+.duo{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:stretch}
+.duo .side{border-radius:var(--r);padding:22px;position:relative;overflow:hidden}
+.side-du{background:linear-gradient(160deg,#FFF6E4,#F6E4C4);border:1px solid var(--line2)}
+.side-zhu{background:linear-gradient(160deg,#F2F7F4,#DDEAE2);border:1px solid rgba(63,122,94,.3)}
+.side h3{margin:0 0 6px;font-size:1.5rem;font-weight:900;letter-spacing:.14em}
+.side-du h3{color:#9A6B12}.side-zhu h3{color:var(--jade)}
+.side .en{font-size:.76rem;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase}
+.side ul{margin:12px 0 0;padding-left:1.1em;color:var(--ink2);font-size:.92rem}
+.side ul li{margin-bottom:6px}
+.vs{align-self:center;width:56px;height:56px;border-radius:50%;background:var(--cinnabar);color:#FFF6E8;
+  display:grid;place-items:center;font-weight:900;box-shadow:0 6px 16px rgba(180,35,31,.3);flex:0 0 auto}
+.table-scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.93rem;background:#fff;border-radius:10px;overflow:hidden}
+th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--indigo);color:#F3EAD6;font-weight:700;letter-spacing:.08em;font-size:.86rem}
+tbody tr:nth-child(even){background:#FBF6E9}
+tbody tr:hover{background:rgba(192,149,43,.12)}
+td b{color:var(--cinnabar-d)}
+
+/* ============ 問題區 ============ */
+.q-band{
+  background:linear-gradient(120deg,rgba(35,65,92,.06),rgba(180,35,31,.05));
+  border-top:1px solid var(--line2);border-bottom:1px solid var(--line2)
+}
+.verdict{
+  display:flex;gap:14px;align-items:flex-start;background:#fff;border-radius:12px;padding:16px 18px;
+  border-left:6px solid var(--cinnabar);box-shadow:var(--shadow2);margin-bottom:24px
+}
+.verdict .tag{flex:0 0 auto;padding:4px 12px;border-radius:999px;background:var(--cinnabar);color:#fff;
+  font-size:.8rem;font-weight:700;letter-spacing:.1em;margin-top:5px}
+.verdict p{margin:0;font-size:1rem}
+.verdict p b{color:var(--cinnabar-d)}
+
+.acc{border:1px solid var(--line2);border-radius:12px;overflow:visible;background:#fff;margin-bottom:12px}
+.acc-h{
+  display:flex;gap:12px;align-items:center;padding:15px 18px;cursor:pointer;background:linear-gradient(90deg,#FFFEF7,#FAF2DF);
+  font-weight:700;transition:.25s;user-select:none;border-radius:12px
+}
+.acc-h:hover{background:linear-gradient(90deg,#FFF8E8,#F6E9CB)}
+.acc-h .no{width:28px;height:28px;flex:0 0 auto;border-radius:8px;background:var(--indigo);color:#F3EAD6;
+  display:grid;place-items:center;font-size:.85rem;font-weight:900}
+.acc-h .arw{margin-left:auto;transition:.35s;color:var(--gold);font-size:1rem;flex:0 0 auto}
+.acc.open .acc-h .arw{transform:rotate(180deg)}
+.acc.open .acc-h{background:linear-gradient(90deg,#FFF1EC,#FBE3D8)}
+.acc-b{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.acc-b .inner{padding:6px 20px 20px;color:var(--ink2);font-size:.95rem;border-top:1px dashed var(--line2)}
+.acc-b .inner p{margin:12px 0}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.78rem;font-weight:700;margin:0 4px 6px 0}
+.pill.red{background:rgba(180,35,31,.1);color:var(--cinnabar-d);border:1px solid rgba(180,35,31,.25)}
+.pill.blue{background:rgba(35,65,92,.1);color:var(--indigo);border:1px solid rgba(35,65,92,.25)}
+.pill.green{background:rgba(63,122,94,.12);color:var(--jade);border:1px solid rgba(63,122,94,.28)}
+.pill.gold{background:rgba(192,149,43,.14);color:#8A6410;border:1px solid rgba(192,149,43,.35)}
+
+.test3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:26px}
+.t3{background:#fff;border:1px solid var(--line2);border-radius:12px;padding:16px;position:relative;overflow:hidden}
+.t3 .n{position:absolute;right:-6px;top:-18px;font-size:4.2rem;font-weight:900;color:rgba(192,149,43,.16);line-height:1}
+.t3 h4{margin:0 0 6px;color:var(--cinnabar-d);font-size:1.02rem;letter-spacing:.06em}
+.t3 p{margin:0;font-size:.89rem;color:var(--ink2);line-height:1.85}
+.t3 p b{color:var(--cinnabar-d)}
+.case-note{
+  background:linear-gradient(120deg,#FFF9EC,#FDF1E4);border:1px dashed var(--gold);border-radius:12px;padding:18px;margin-top:20px
+}
+.case-note h4{margin:0 0 10px;color:#8A6410;font-size:.95rem;letter-spacing:.1em}
+.case-note ul{margin:0;padding-left:1.15em;font-size:.92rem;color:var(--ink2)}
+.case-note li{margin-bottom:9px}
+.case-note li b{color:var(--indigo)}
+
+.cond-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.cond{
+  background:#fff;border:1px solid var(--line2);border-radius:12px;padding:18px;box-shadow:var(--shadow2);
+  transition:.3s;position:relative;overflow:hidden;cursor:pointer
+}
+.cond:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:var(--gold)}
+.cond .k{
+  width:34px;height:34px;border-radius:9px;background:var(--jade);color:#fff;display:grid;place-items:center;
+  font-weight:900;margin-bottom:10px;font-size:.95rem
+}
+.cond:nth-child(2) .k{background:var(--indigo2)}
+.cond:nth-child(3) .k{background:var(--gold)}
+.cond:nth-child(4) .k{background:var(--cinnabar2)}
+.cond:nth-child(5) .k{background:#7A5CA8}
+.cond:nth-child(6) .k{background:#2E8B8B}
+.cond h4{margin:0 0 6px;font-size:1rem;color:var(--ink)}
+.cond p{margin:0;font-size:.88rem;color:var(--ink2);line-height:1.85}
+.cond .eg{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:.83rem;color:var(--ink3)}
+.cond .eg b{color:var(--cinnabar)}
+.cond.seen{outline:2px solid rgba(192,149,43,.5);outline-offset:2px}
+
+.layers{display:flex;flex-direction:column;gap:12px}
+.layer{display:grid;grid-template-columns:120px 1fr;gap:16px;background:#fff;border:1px solid var(--line2);
+  border-radius:12px;padding:16px 18px;align-items:center;cursor:pointer;transition:.25s}
+.layer:hover{transform:translateX(4px);box-shadow:var(--shadow2)}
+.layer .lt{text-align:center;border-radius:10px;padding:10px 6px;color:#fff;font-weight:900;letter-spacing:.1em}
+.layer:nth-child(1) .lt{background:var(--cinnabar)}
+.layer:nth-child(2) .lt{background:var(--indigo)}
+.layer:nth-child(3) .lt{background:var(--jade)}
+.layer .lt small{display:block;font-weight:700;font-size:.7rem;opacity:.85;letter-spacing:.06em}
+.layer p{margin:0;font-size:.93rem;color:var(--ink2)}
+.layer p b{color:var(--ink)}
+.layer.seen{outline:2px solid rgba(192,149,43,.5);outline-offset:2px}
+.scale-compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+.sc{border-radius:12px;padding:18px;border:1px solid var(--line2);cursor:pointer;transition:.25s}
+.sc:hover{transform:translateY(-3px)}
+.sc.motive{background:linear-gradient(160deg,#FFF4EE,#FBE6DA)}
+.sc.result{background:linear-gradient(160deg,#EFF5F2,#DCEAE2)}
+.sc h4{margin:0 0 8px;font-size:1.05rem;letter-spacing:.06em}
+.sc.motive h4{color:var(--cinnabar-d)}.sc.result h4{color:var(--jade)}
+.sc ul{margin:0;padding-left:1.1em;font-size:.9rem;color:var(--ink2)}
+.sc li{margin-bottom:7px}
+.sc.seen{outline:2px solid rgba(192,149,43,.5);outline-offset:2px}
+
+/* ============ 案例庫 ============ */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;align-items:center}
+.fbtn{
+  padding:7px 16px;border-radius:999px;border:1px solid var(--line2);background:#fff;cursor:pointer;
+  font-family:inherit;font-size:.86rem;font-weight:700;color:var(--ink2);transition:.25s
+}
+.fbtn:hover{border-color:var(--cinnabar);color:var(--cinnabar)}
+.fbtn.on{background:var(--cinnabar);border-color:var(--cinnabar-d);color:#fff}
+.fbtn.alt{background:var(--indigo);color:#fff;border-color:var(--indigo)}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+.cc{
+  background:#fff;border:1px solid var(--line2);border-radius:14px;box-shadow:var(--shadow2);
+  display:flex;flex-direction:column;transition:.3s
+}
+.cc:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.cc-top{padding:16px 18px 12px;border-bottom:1px solid var(--line);position:relative}
+.cc-top h4{margin:0 0 4px;font-size:1.03rem;color:var(--ink);letter-spacing:.02em;padding-right:60px}
+.cc-top .yr{font-size:.78rem;color:var(--ink3);letter-spacing:.06em}
+.cc-tag{position:absolute;right:14px;top:16px;font-size:.72rem;font-weight:700;padding:3px 9px;border-radius:999px}
+.tag-pos{background:rgba(63,122,94,.14);color:var(--jade);border:1px solid rgba(63,122,94,.3)}
+.tag-neg{background:rgba(180,35,31,.1);color:var(--cinnabar-d);border:1px solid rgba(180,35,31,.28)}
+.tag-mid{background:rgba(192,149,43,.16);color:#8A6410;border:1px solid rgba(192,149,43,.4)}
+.tag-str{background:rgba(35,65,92,.1);color:var(--indigo);border:1px solid rgba(35,65,92,.25)}
+.cc-dz{display:grid;grid-template-columns:1fr 1fr;gap:0;font-size:.85rem}
+.cc-dz>div{padding:12px 16px}
+.cc-dz .d{background:#FFFAEF;border-right:1px dashed var(--line2)}
+.cc-dz .z{background:#F4F9F5}
+.cc-dz b{display:block;font-size:.75rem;letter-spacing:.12em;margin-bottom:4px}
+.cc-dz .d b{color:#9A6B12}.cc-dz .z b{color:var(--jade)}
+.cc-body{padding:14px 16px 0;font-size:.9rem;color:var(--ink2)}
+.cc-more{max-height:0;overflow:hidden;transition:max-height .5s ease}
+.cc-more .inner{padding:4px 16px 6px;font-size:.88rem;color:var(--ink2)}
+.cc-more .inner p{margin:8px 0}
+.cc-foot{margin-top:auto;padding:14px 16px 16px;display:flex;align-items:center;gap:10px}
+.cc-verdict{font-size:.86rem;font-weight:900;color:var(--cinnabar-d);letter-spacing:.06em}
+.cc-btn{margin-left:auto;background:none;border:1px solid var(--line2);border-radius:999px;padding:5px 14px;
+  font-family:inherit;font-size:.8rem;font-weight:700;color:var(--ink2);cursor:pointer;transition:.25s;flex:0 0 auto}
+.cc-btn:hover{border-color:var(--cinnabar);color:var(--cinnabar);background:rgba(180,35,31,.05)}
+
+/* ============ 善賣指數 ============ */
+.calc{display:grid;grid-template-columns:1.05fr .95fr;gap:26px;align-items:start}
+.slider-row{margin-bottom:18px}
+.slider-row label{display:flex;justify-content:space-between;align-items:baseline;font-size:.93rem;font-weight:700;gap:10px}
+.slider-row label span.v{color:var(--cinnabar);font-weight:900;font-size:1rem}
+.slider-row small{display:block;color:var(--ink3);font-size:.78rem;font-weight:400;line-height:1.6}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:999px;margin-top:9px;
+  background:linear-gradient(90deg,var(--gold2) 0%,var(--cinnabar) 100%);outline:none
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid var(--cinnabar);
+  cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.2)
+}
+input[type=range]::-moz-range-thumb{
+  width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--cinnabar);cursor:pointer
+}
+.gauge{background:#fff;border:1px solid var(--line2);border-radius:14px;padding:18px;text-align:center}
+.gauge .score{font-size:2.6rem;font-weight:900;color:var(--cinnabar-d);line-height:1.1}
+.gauge .score small{font-size:1rem;color:var(--ink3);font-weight:700}
+.gauge .grade{
+  display:inline-block;margin:8px 0 4px;padding:6px 18px;border-radius:999px;background:var(--cinnabar);
+  color:#fff;font-weight:900;letter-spacing:.12em;font-size:1rem
+}
+.gauge .desc{font-size:.88rem;color:var(--ink2);margin:8px 0 0;text-align:left;line-height:1.85}
+.presets{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.preset{padding:6px 12px;border-radius:8px;border:1px solid var(--line2);background:#FFFDF6;cursor:pointer;
+  font-family:inherit;font-size:.8rem;font-weight:700;color:var(--ink2);transition:.25s}
+.preset:hover{border-color:var(--indigo);color:var(--indigo);background:rgba(35,65,92,.06)}
+
+/* ============ 投票 ============ */
+.vote-item{background:#fff;border:1px solid var(--line2);border-radius:14px;padding:20px;margin-bottom:18px}
+.vote-item h4{margin:0 0 14px;font-size:1.05rem;color:var(--ink);line-height:1.7}
+.vote-opts{display:grid;gap:10px}
+.vopt{
+  border:1px solid var(--line2);border-radius:10px;padding:12px 14px;cursor:pointer;position:relative;
+  overflow:hidden;transition:.25s;background:#FFFEF8;font-size:.93rem
+}
+.vopt:hover{border-color:var(--cinnabar);transform:translateX(3px)}
+.vopt .bar{position:absolute;left:0;top:0;bottom:0;width:0;background:rgba(180,35,31,.13);transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.vopt .txt{position:relative;display:flex;justify-content:space-between;gap:10px;font-weight:700}
+.vopt .txt .pct{color:var(--cinnabar);opacity:0;transition:.4s;flex:0 0 auto}
+.voted .vopt{cursor:default}
+.voted .vopt .txt .pct{opacity:1}
+.vopt.mine{border-color:var(--cinnabar);box-shadow:0 0 0 2px rgba(180,35,31,.18)}
+.debate-out{max-height:0;overflow:hidden;transition:max-height .5s ease}
+.debate-out .inner{padding-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.arg{border-radius:10px;padding:14px;font-size:.87rem}
+.arg.pro{background:#F3F8F4;border:1px solid rgba(63,122,94,.3)}
+.arg.con{background:#FDF2EE;border:1px solid rgba(180,35,31,.25)}
+.arg h5{margin:0 0 8px;font-size:.9rem;letter-spacing:.08em}
+.arg.pro h5{color:var(--jade)}.arg.con h5{color:var(--cinnabar-d)}
+.arg ul{margin:0;padding-left:1.05em;color:var(--ink2)}
+.arg li{margin-bottom:7px}
+
+/* ============ 測驗 ============ */
+.quiz-q{background:#fff;border:1px solid var(--line2);border-radius:12px;padding:18px;margin-bottom:14px}
+.quiz-q .qt{font-weight:700;margin-bottom:12px;line-height:1.8}
+.quiz-q .qt em{font-style:normal;color:var(--cinnabar);margin-right:6px}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:9px;
+  cursor:pointer;margin-bottom:8px;transition:.2s;font-size:.92rem;background:#FFFEF9}
+.opt:hover{border-color:var(--gold);background:#FFFBEE}
+.opt .k{flex:0 0 auto;width:24px;height:24px;border-radius:50%;border:1px solid var(--line2);display:grid;
+  place-items:center;font-size:.78rem;font-weight:900;color:var(--ink2)}
+.opt.sel{border-color:var(--indigo);background:rgba(35,65,92,.07)}
+.opt.sel .k{background:var(--indigo);color:#fff;border-color:var(--indigo)}
+.opt.right{border-color:var(--jade);background:rgba(63,122,94,.12)}
+.opt.right .k{background:var(--jade);color:#fff;border-color:var(--jade)}
+.opt.wrong{border-color:var(--cinnabar);background:rgba(180,35,31,.09)}
+.opt.wrong .k{background:var(--cinnabar);color:#fff;border-color:var(--cinnabar)}
+.expl{display:none;margin-top:10px;padding:12px 14px;border-left:4px solid var(--gold);background:#FFFBEE;
+  border-radius:8px;font-size:.88rem;color:var(--ink2)}
+.expl.show{display:block;animation:fade .5s}
+@keyframes fade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.btn{
+  padding:11px 26px;border-radius:999px;border:none;background:var(--cinnabar);color:#fff;font-family:inherit;
+  font-size:.95rem;font-weight:900;letter-spacing:.1em;cursor:pointer;box-shadow:0 6px 16px rgba(180,35,31,.3);transition:.25s
+}
+.btn:hover{background:var(--cinnabar-d);transform:translateY(-2px)}
+.btn.ghost{background:#fff;color:var(--cinnabar);border:1px solid var(--cinnabar);box-shadow:none}
+.btn.ghost:hover{background:rgba(180,35,31,.07)}
+.btn.sm{padding:7px 16px;font-size:.85rem}
+.score-board{display:none;background:linear-gradient(120deg,#FFF6E9,#FDEBDD);border:1px solid var(--gold);
+  border-radius:14px;padding:22px;text-align:center;margin-bottom:18px}
+.score-board.show{display:block;animation:fade .6s}
+.score-board .big{font-size:2.8rem;font-weight:900;color:var(--cinnabar-d);line-height:1.1}
+
+/* ============ 印章軌道 ============ */
+.rail{position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:12px}
+.rail .stamp{
+  width:52px;height:52px;border-radius:10px;border:2px dashed rgba(180,35,31,.35);display:grid;place-items:center;
+  color:rgba(180,35,31,.45);font-weight:900;font-size:20px;background:rgba(255,255,255,.6);cursor:pointer;
+  transition:.35s;position:relative
+}
+.rail .stamp:hover .tip{opacity:1;transform:translate(-8px,-50%)}
+.rail .stamp.got{
+  background:var(--cinnabar);color:#FFF6E8;border:2px solid var(--cinnabar-d);
+  box-shadow:0 6px 14px rgba(180,35,31,.35);animation:stampIn .5s cubic-bezier(.2,1.4,.4,1)
+}
+@keyframes stampIn{0%{transform:scale(1.7) rotate(-14deg);opacity:0}60%{transform:scale(.94) rotate(3deg);opacity:1}100%{transform:none}}
+.rail .tip{
+  position:absolute;right:100%;top:50%;transform:translate(6px,-50%);white-space:nowrap;background:var(--ink);
+  color:#FFF6E8;font-size:.74rem;padding:4px 10px;border-radius:6px;opacity:0;transition:.3s;pointer-events:none;letter-spacing:.06em
+}
+
+/* ============ 結語 ============ */
+.final{
+  background:linear-gradient(140deg,#23415C,#1A3247);color:#F5EBD6;border-radius:18px;padding:38px;position:relative;
+  overflow:hidden;box-shadow:var(--shadow)
+}
+.final::after{
+  content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;
+  background:radial-gradient(circle,rgba(224,190,94,.25),transparent 70%)
+}
+.final h3{margin:0 0 14px;font-size:1.55rem;color:var(--gold2);letter-spacing:.1em;font-weight:900}
+.final p{color:#E8DDC6;font-size:1rem;max-width:56em}
+.final .quote{border-left:4px solid var(--gold);padding-left:18px;margin:22px 0;font-size:1.12rem;color:#FFF6E8;letter-spacing:.06em}
+.takes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.take{background:rgba(255,255,255,.07);border:1px solid rgba(224,190,94,.3);border-radius:12px;padding:16px}
+.take b{display:block;color:var(--gold2);margin-bottom:6px;letter-spacing:.1em}
+.take p{margin:0;font-size:.88rem;color:#DCD1BA}
+
+footer{border-top:1px solid var(--line2);background:linear-gradient(180deg,#F7EFDC,#F1E5CB);padding:30px 0;margin-top:36px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--ink3);font-size:.85rem}
+
+/* 顯現動畫（僅在 JS 可用時啟用，避免內容永久隱藏） */
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.js .reveal.in{opacity:1;transform:none}
+.totop{
+  position:fixed;right:18px;bottom:20px;width:44px;height:44px;border-radius:50%;background:var(--cinnabar);color:#fff;
+  border:none;cursor:pointer;font-size:1.1rem;box-shadow:0 6px 16px rgba(180,35,31,.35);opacity:0;pointer-events:none;
+  transition:.3s;z-index:55
+}
+.totop.show{opacity:1;pointer-events:auto}
+.totop:hover{background:var(--cinnabar-d)}
+.hint{font-size:.83rem;color:var(--ink3);margin-top:10px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.toolbar-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+@media(max-width:980px){
+  .hero-grid,.calc,.duo,.two,.scale-compare,.debate-out .inner{grid-template-columns:1fr}
+  .vs{margin:0 auto}
+  .test3{grid-template-columns:1fr}
+  .hero-q{grid-template-columns:1fr}
+  .takes{grid-template-columns:1fr}
+  .rail{display:none}
+  .navlinks{display:none}
+  .navlinks.open{display:flex;position:absolute;top:100%;left:0;right:0;background:var(--paper);
+    flex-direction:column;padding:12px;border-bottom:1px solid var(--line2);box-shadow:var(--shadow);z-index:70}
+  .burger{display:grid;place-items:center}
+  .layer{grid-template-columns:1fr}
+  .hero-art{order:-1}
+  .float-seal{width:70px;height:70px;font-size:15px}
+  section{padding:46px 0}
+  .final{padding:26px}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add("js");document.body&&document.body.classList.add("js");</script>
+
+<header class="topbar">
+  <div class="in">
+    <div class="brand"><span class="seal-mini">櫝</span> 買櫝還珠・價值之辨</div>
+    <nav class="navlinks" id="navlinks">
+      <a href="#yuanwen">原文</a>
+      <a href="#gainian">概念</a>
+      <a href="#q1">問一</a>
+      <a href="#q2">問二</a>
+      <a href="#q3">問三</a>
+      <a href="#cases">案例庫</a>
+      <a href="#calc">善賣指數</a>
+      <a href="#debate">思辨</a>
+      <a href="#quiz">測驗</a>
+    </nav>
+    <div class="tools">
+      <button class="tbtn" id="fdown" title="縮小字級">A−</button>
+      <button class="tbtn" id="fup" title="放大字級">A+</button>
+      <button class="tbtn burger" id="burger" aria-label="選單">☰</button>
+    </div>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<main>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="hero-kicker">韓非子 · 外儲說左上 ── 一則兩千三百年前的行銷個案</span>
+        <h1>買櫝<span>還</span>珠</h1>
+        <p class="sub">楚人飾櫝以賣珠，鄭人買櫝而還珠。韓非諷的是「以文害用」；今天我們每天在禮盒、盲盒、聯名杯與開箱影片裡，重複上演同一場交易。本頁以三問為骨、以十五則現代商業案例為肉，完成一次古典文本與當代經濟學的對話。</p>
+        <div class="hero-meta">
+          <span class="chip">主題：<b>包裝 × 價值 × 動機</b></span>
+          <span class="chip">案例：<b>15 則</b></span>
+          <span class="chip">檢定：<b>8 題</b></span>
+          <div class="mini-stamps" id="stampMini"></div>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="frame">
+          <svg viewBox="0 0 640 430" role="img" aria-label="買櫝還珠古風插畫：華麗木櫝與被遺落的明珠">
+            <defs>
+              <linearGradient id="gBg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#FFFDF5"/><stop offset="1" stop-color="#F6E9CE"/>
+              </linearGradient>
+              <linearGradient id="gWood" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#C98F4E"/><stop offset="1" stop-color="#8E5A2B"/>
+              </linearGradient>
+              <linearGradient id="gWoodTop" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#E0B075"/><stop offset="1" stop-color="#B5793C"/>
+              </linearGradient>
+              <linearGradient id="gWoodSide" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#8A5527"/><stop offset="1" stop-color="#5F3A1A"/>
+              </linearGradient>
+              <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#F0D878"/><stop offset=".5" stop-color="#C0952B"/><stop offset="1" stop-color="#E8CE72"/>
+              </linearGradient>
+              <radialGradient id="gPearl" cx="35%" cy="30%">
+                <stop offset="0" stop-color="#FFFFFF"/><stop offset=".55" stop-color="#F2F4F8"/>
+                <stop offset="1" stop-color="#C9CFDC"/>
+              </radialGradient>
+              <radialGradient id="gGlow" cx="50%" cy="50%">
+                <stop offset="0" stop-color="#FFF6D8" stop-opacity=".95"/>
+                <stop offset="1" stop-color="#FFE9A8" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="gSilk" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#D9463A"/><stop offset="1" stop-color="#8A1916"/>
+              </linearGradient>
+              <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="6"/>
+              </filter>
+            </defs>
+            <rect width="640" height="430" fill="url(#gBg)"/>
+            <path d="M0 300 Q80 250 150 292 Q210 240 285 290 Q350 250 420 292 Q500 248 570 292 Q610 270 640 292 L640 430 L0 430Z" fill="#E9DFC6" opacity=".55"/>
+            <g fill="none" stroke="#C0952B" stroke-width="2.4" opacity=".45" stroke-linecap="round">
+              <path d="M60 78 q18-22 40-8 q16-18 38-4 q14 10 2 22 q-18 16-44 10 q-24 8-38-6 q-8-8 2-14Z"/>
+              <path d="M470 60 q16-20 36-6 q16-14 34-2 q12 10 0 20 q-16 14-40 8 q-22 8-34-6 q-6-8 4-14Z"/>
+              <path d="M545 150 q12-14 26-4 q12-10 24-2 q8 8 0 14 q-12 10-28 6 q-16 6-24-4"/>
+            </g>
+            <path d="M40 356 Q320 322 600 356 Q620 372 600 388 Q320 418 40 388 Q20 372 40 356Z" fill="#EADCC0" opacity=".8"/>
+            <ellipse cx="272" cy="378" rx="180" ry="20" fill="#8A5527" opacity=".18" filter="url(#soft)"/>
+            <polygon points="150,240 400,240 400,372 150,372" fill="url(#gWood)"/>
+            <polygon points="150,240 212,196 462,196 400,240" fill="url(#gWoodTop)"/>
+            <polygon points="400,240 462,196 462,328 400,372" fill="url(#gWoodSide)"/>
+            <polygon points="150,278 400,278 462,234 462,246 400,290 150,290" fill="#5F3A1A" opacity=".55"/>
+            <g fill="none" stroke="url(#gGold)" stroke-width="3">
+              <rect x="164" y="300" width="222" height="58" rx="4"/>
+              <polygon points="166,246 224,204 446,204 388,246"/>
+            </g>
+            <g opacity=".9">
+              <polygon points="240,214 300,214 288,232 228,232" fill="#3F7A5E" opacity=".55"/>
+              <polygon points="320,214 380,214 368,232 308,232" fill="#2E8B8B" opacity=".5"/>
+              <circle cx="270" cy="223" r="4" fill="#F0D878"/>
+              <circle cx="350" cy="223" r="4" fill="#F0D878"/>
+            </g>
+            <circle cx="275" cy="329" r="26" fill="#F6E9CE" stroke="url(#gGold)" stroke-width="3"/>
+            <circle cx="275" cy="329" r="15" fill="#3F7A5E" opacity=".8"/>
+            <circle cx="275" cy="329" r="7" fill="url(#gPearl)"/>
+            <g>
+              <circle cx="176" cy="312" r="5.5" fill="url(#gPearl)" stroke="#C0952B" stroke-width="1.4"/>
+              <circle cx="374" cy="312" r="5.5" fill="url(#gPearl)" stroke="#C0952B" stroke-width="1.4"/>
+              <circle cx="176" cy="346" r="5.5" fill="#D9463A" opacity=".85" stroke="#C0952B" stroke-width="1.4"/>
+              <circle cx="374" cy="346" r="5.5" fill="#D9463A" opacity=".85" stroke="#C0952B" stroke-width="1.4"/>
+            </g>
+            <g fill="none" stroke="#F0D878" stroke-width="2" opacity=".7" stroke-linecap="round">
+              <path d="M204 320 q10-12 22-4 q10-10 22-2"/>
+              <path d="M326 320 q10-12 22-4 q10-10 22-2"/>
+              <path d="M204 344 q10-12 22-4 q10-10 22-2"/>
+              <path d="M326 344 q10-12 22-4 q10-10 22-2"/>
+            </g>
+            <g stroke="#C0952B" stroke-width="2" fill="none" opacity=".5">
+              <path d="M412 258 L452 228"/><path d="M412 286 L452 256"/><path d="M412 314 L452 284"/>
+            </g>
+            <g fill="none" stroke="#B9A88A" stroke-width="2" opacity=".5" stroke-linecap="round">
+              <path d="M300 190 q-14-22 6-40 q18-16 4-38"/>
+              <path d="M330 188 q-10-18 6-32 q14-14 4-30"/>
+            </g>
+            <ellipse cx="556" cy="352" rx="66" ry="20" fill="url(#gSilk)" opacity=".92"/>
+            <path d="M500 344 q28-14 56-2 q28 12 56-2 q6 16-14 24 q-42 14-84 0 q-20-8-14-20Z" fill="#B4231F"/>
+            <circle cx="556" cy="316" r="52" fill="url(#gGlow)"/>
+            <circle cx="556" cy="322" r="26" fill="url(#gPearl)" stroke="#D8DCE6" stroke-width="1"/>
+            <ellipse cx="547" cy="313" rx="8" ry="5.5" fill="#fff" opacity=".9" transform="rotate(-25 547 313)"/>
+            <g fill="#F0D878" opacity=".9">
+              <circle cx="512" cy="286" r="2.6"/><circle cx="600" cy="278" r="2.2"/>
+              <circle cx="588" cy="304" r="1.8"/><circle cx="524" cy="308" r="1.6"/>
+            </g>
+            <g transform="translate(586,388)">
+              <rect x="0" y="0" width="34" height="34" rx="4" fill="#B4231F"/>
+              <text x="17" y="24" font-size="17" fill="#FFF3E2" text-anchor="middle" font-weight="bold" font-family="serif">珠</text>
+            </g>
+          </svg>
+        </div>
+        <div class="float-seal">買櫝<br>還珠</div>
+      </div>
+    </div>
+
+    <div class="hero-q">
+      <div class="hq" data-go="#q1"><b>問 · 壹</b><p>包裝吸引力超過商品本身，是否「必然」構成喧賓奪主、價值錯置？為什麼？</p></div>
+      <div class="hq" data-go="#q2"><b>問 · 貳</b><p>在什麼條件下，「買櫝還珠」反而是合理的商業決策？</p></div>
+      <div class="hq" data-go="#q3"><b>問 · 參</b><p>評估「善賣」，應以「賣方動機」或「買方結果」作為主要標準？</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 原文 ===== -->
+<section id="yuanwen">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-no">壹</div>
+      <div><h2>原文精讀 · 卷軸逐句</h2><p>點選任一句即展開白話譯文與詞義注釋。五句全開，即得「讀」印。</p></div>
+    </div>
+    <div class="toolbar-row reveal">
+      <button class="btn ghost sm" id="ywAll">全部展開注釋</button>
+      <span class="hint" style="margin:0">共 5 句 · 附 6 個關鍵詞義</span>
+    </div>
+    <div class="scroll-box reveal">
+      <div id="ywList"></div>
+      <div class="yw-src">──《韓非子 · 外儲說左上》</div>
+    </div>
+    <div class="rule"></div>
+    <div class="card reveal">
+      <h3 style="margin-top:0">關鍵詞語 · 六義</h3>
+      <div class="word-grid" id="wordGrid"></div>
+      <p class="hint">◎ 故事脈絡：田鳩向楚王解釋墨子為何「言多而不辯」，並舉「秦伯嫁女」與「楚人鬻珠」為喻——<b>文飾過盛，則人忘其本</b>。這是一則關於「形式與功用」的政治經濟學寓言，而非單純嘲笑買家愚蠢。韓非真正的聽眾是君主：別被華麗的言辭買走，而忘了國家需要的功用。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 概念 ===== -->
+<section id="gainian" class="q-band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-no">貳</div>
+      <div><h2>概念座標 · 櫝與珠的古今轉譯</h2><p>先把古典詞彙翻譯成現代商業語言，後面的三問才有共同的度量衡。</p></div>
+    </div>
+    <div class="duo reveal">
+      <div class="side side-du">
+        <span class="en">The Casket</span>
+        <h3>櫝</h3>
+        <p style="margin:6px 0 0;color:var(--ink2);font-size:.93rem">盛珠之器。現代對應：</p>
+        <ul>
+          <li>實體包裝、禮盒、容器與材質工藝</li>
+          <li>品牌敘事、廣告文案、IP 聯名</li>
+          <li>零售空間、開箱儀式、社交展示價值</li>
+          <li>介面設計、抽選機制、稀缺性操盤</li>
+        </ul>
+        <p style="font-size:.86rem;color:#8A6410;margin-top:12px"><b>經濟功能：</b>訊號（signaling）、降低搜尋成本、承載情緒與身分價值。</p>
+      </div>
+      <div class="vs">辨</div>
+      <div class="side side-zhu">
+        <span class="en">The Pearl</span>
+        <h3>珠</h3>
+        <p style="margin:6px 0 0;color:var(--ink2);font-size:.93rem">交易之本。現代對應：</p>
+        <ul>
+          <li>核心功能、性能、成分與耐久度</li>
+          <li>解決問題的能力（jobs to be done）</li>
+          <li>售後、保固、生態系與長期服務</li>
+          <li>真實性價比與可重複的滿意度</li>
+        </ul>
+        <p style="font-size:.86rem;color:var(--jade);margin-top:12px"><b>經濟功能：</b>使用價值（use value），決定回購與口碑的根基。</p>
+      </div>
+    </div>
+
+    <div class="rule"></div>
+    <div class="card reveal">
+      <h3 style="margin-top:0">古今術語對照表</h3>
+      <div class="table-scroll">
+      <table>
+        <thead><tr><th style="width:20%">韓非子語彙</th><th style="width:34%">現代商業／經濟學轉譯</th><th>判準與可觀測指標</th></tr></thead>
+        <tbody>
+          <tr><td><b>珠</b>（本）</td><td>核心效用、產品力、使用價值</td><td>功能達成率、退貨率、回購率、使用時長</td></tr>
+          <tr><td><b>櫝</b>（末）</td><td>包裝、品牌敘事、體驗設計、訊號裝置</td><td>包裝成本佔售價比、開箱分享率、品牌辨識度</td></tr>
+          <tr><td><b>買櫝還珠</b></td><td>買方把預算與注意力配置到載體而非核心</td><td>購買動機調查、二手市場價格結構、留存曲線</td></tr>
+          <tr><td><b>善賣櫝</b></td><td>行銷效能高：會做包裝、會說故事</td><td>首購轉換率、話題聲量、溢價能力</td></tr>
+          <tr><td><b>善鬻珠</b></td><td>價值交付高：真把核心價值賣出去</td><td>LTV、NPS、市佔延續、口碑淨推薦</td></tr>
+          <tr><td><b>以文害用</b></td><td>形式掩蓋或劣化功能：過度包裝、黑暗模式</td><td>包裝廢棄量、投訴率、監管處分、取消訂閱難度</td></tr>
+          <tr><td><b>韓非的「功用」</b></td><td>結果主義 + 社會效率（治國層面）</td><td>長期消費者福祉、外部成本、產業生態健康</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 問題一 ===== -->
+<section id="q1">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-no">問</div>
+      <div><h2>問一 · 包裝勝過商品，必然構成喧賓奪主與價值錯置嗎？</h2><p>答案不在「誰更搶眼」，而在「注意力與成本的配置，是否服務於真實效用的實現」。</p></div>
+    </div>
+
+    <div class="verdict reveal">
+      <span class="tag">結論</span>
+      <p><b>不必然。</b>「包裝吸引力 &gt; 商品吸引力」只是一種<b>現象描述</b>，不是<b>價值判斷</b>。唯有同時通過「排擠、認知、事後」三道檢驗，才構成喧賓奪主與價值錯置；否則它可能正是價值創造的一部分——因為在體驗經濟與資訊不對稱的市場中，包裝本身就承載真實的資訊功能與情緒效用。</p>
+    </div>
+
+    <div class="test3 reveal">
+      <div class="t3"><span class="n">一</span><h4>排擠要件</h4><p>包裝的成本、資源與買方注意力，是否<b>實質排擠或劣化</b>了核心功能的實現？例：預算全花在禮盒致使食材降級；或包裝結構複雜到無法回收。若無排擠，那只是資源配置的選擇。</p></div>
+      <div class="t3"><span class="n">二</span><h4>認知要件</h4><p>買方的決策依據，是來自<b>被補充的資訊</b>還是<b>被扭曲的訊號</b>？昂貴包裝若如實傳遞品質（costly signal），屬資訊補充；若刻意誘導「包裝＝功效」的錯誤推論，即屬操縱。</p></div>
+      <div class="t3"><span class="n">三</span><h4>事後要件</h4><p>消費後效用是否<b>低於預期</b>？看退貨率、投訴、無回購、二手拋售，以及被外部化的環境／健康／未成年成本。若事後滿意且外部性已內部化，難以稱為錯置。</p></div>
+    </div>
+
+    <div class="toolbar-row reveal">
+      <button class="btn ghost sm" id="accAll">展開全部論證</button>
+      <span class="hint" style="margin:0">四段論證 · 展開後可再收起</span>
+    </div>
+    <div id="acc1"></div>
+
+    <div class="case-note reveal">
+      <h4>◈ 現代案例對照（問一）</h4>
+      <ul>
+        <li><b>Apple 包裝與開箱儀式</b>：盒蓋下落的阻尼秒數、無膠帶、紙纖維材質都被反覆調校，但包裝成本佔售價比極低，且未排擠研發；核心功能強、退貨率低、回購與 NPS 高 → 三要件皆不成立，屬「櫝以彰珠」。</li>
+        <li><b>Tiffany Blue Box</b>：知更鳥蛋藍禮盒（Pantone 1837）已註冊為商標，盒子本身就是「真品與承諾」的訊號裝置；溢價對應的是鑑定、保值與情感保證 → 資訊功能，而非錯置。</li>
+        <li><b>月餅禮盒過度包裝</b>：多層木盒、緞面、鍍金配件使包裝成本遠超內容物。中國 GB 23350—2021《限制商品過度包裝要求 食品和化妝品》明定包裝層數、空隙率與「除直接接觸包裝外之成本佔售價比例」上限 → 官方以標準承認：此處三要件全部成立，構成價值錯置與社會浪費。</li>
+        <li><b>鍾薛高「雪糕刺客」</b>：瓦片造型、國潮文案與高端通路構成強敘事溢價；2023 年輿情風波、創辦人「愛要不要」言論，加上後續欠款與股權凍結，顯示核心產品未能承接敘事 → 事後要件成立，典型「文勝質則史」。</li>
+        <li><b>IKEA 平板包裝 / Amazon Frustration-Free Packaging / Lush 裸包裝</b>：反向策略——刻意削弱「櫝」以降低成本、提升拆裝體驗與環保形象。證明包裝吸引力的<b>最優值不是最大值</b>，而是與價值主張匹配。</li>
+      </ul>
+    </div>
+
+    <div class="card reveal" style="margin-top:20px;border-left:6px solid var(--cinnabar)">
+      <h3 style="margin-top:0">小結：一句話判準（反事實測試）</h3>
+      <p style="margin:0;font-size:1.02rem">不要問「櫝是否比珠亮眼」，要問：<b>「若把投在櫝上的每一分成本與注意力，全部移到珠上，買方的總效用會上升還是下降？」</b>上升 → 錯置；下降或持平 → 櫝本身就是效用的一部分。這個判準只依賴邊際效用比較，不依賴道德直覺，因此可用於任何產業與時代。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 問題二 ===== -->
+<section id="q2" class="q-band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-no">問</div>
+      <div><h2>問二 · 什麼條件下，「買櫝還珠」反而是合理的商業決策？</h2><p>價值是主觀的。當六個條件成立時，鄭人的選擇不是愚，而是理性。（點選卡片可標記已讀）</p></div>
+    </div>
+
+    <div class="verdict reveal" style="border-left-color:var(--jade)">
+      <span class="tag" style="background:var(--jade)">結論</span>
+      <p>「合理」有兩個層次：<b>對買方</b>——在主觀偏好、資訊結構與交易成本下，選櫝的期望效用高於選珠；<b>對賣方</b>——以櫝差異化能開拓客群、創造溢價並累積品牌資產，且未損害對核心價值的誠實呈現。兩者的共同前提是：<b>知情、自願、事後滿意、外部性已被內部化。</b></p>
+    </div>
+
+    <div class="cond-grid reveal" id="condGrid"></div>
+
+    <div class="rule"></div>
+    <div class="card reveal">
+      <h3 style="margin-top:0">但「合理」有邊界：四種必須否決的情境</h3>
+      <p style="color:var(--ink2);font-size:.95rem">主觀價值論不等於「怎樣都可以」。當下列情形出現，「買櫝還珠」就從理性選擇變成需要監管與企業自律的市場失靈：</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px">
+        <div class="arg con"><h5>一、機率與條款不透明</h5><ul><li>盲盒隱藏款機率未公示</li><li>克重、成分、自動續費條款被隱藏</li></ul></div>
+        <div class="arg con"><h5>二、對象無完全判斷能力</h5><ul><li>面向未成年人的抽選與攀比設計</li><li>利用認知弱點的成癮機制</li></ul></div>
+        <div class="arg con"><h5>三、外部性未內部化</h5><ul><li>過度包裝廢棄物、重複購買的資源浪費</li><li>空瓶、原盒回收流入造假產業鏈</li></ul></div>
+        <div class="arg con"><h5>四、事後效用系統性崩塌</h5><ul><li>一次性炒作、退貨潮、二手價格崩盤</li><li>品牌資產未沉澱即消失</li></ul></div>
+      </div>
+    </div>
+
+    <div class="case-note reveal">
+      <h4>◈ 現代案例對照（問二）</h4>
+      <ul>
+        <li><b>K-POP 實體專輯與隨機小卡</b>：粉絲買專輯主要為抽小卡與寫真，音樂本身在串流平台即可取得——教科書級的「買櫝還珠」。Circle Chart 統計 2023 年韓國實體專輯銷量突破一億張，大量重複購買引發環境爭議，業者隨後推出可回收包裝與數位收藏卡。<b>個體理性（條件 A、C、D）＋產業外部性</b>並存。</li>
+        <li><b>泡泡瑪特盲盒與 LABUBU</b>：塑膠玩偶幾乎無使用功能，買方購買的是「盒＋抽選的不確定性＋社交展示」。2024 年海外熱潮帶動營收與二手溢價數十倍；同時市場監管總局《盲盒經營行為規範指引（試行）》（2023）要求公示機率、限制向 8 周歲以下未成年人銷售 → 此模式「合理但需設邊界」。</li>
+        <li><b>星巴克貓爪杯（2019）</b>：限量玻璃杯 599 元，開賣秒殺、代購溢價、門市排隊與衝突。咖啡（珠）被完全忽視，杯子（櫝）升級為商品本身。對買方符合條件 A＋D；對品牌是高性價比聲量操盤，但一次性客流能否轉為留存，考驗「珠」的承接力。</li>
+        <li><b>喜茶 × FENDI「FENDI 喜悅黃」（2023）</b>：19 元起飲品附聯名杯套與徽章，社群刷屏、門店爆單、二手周邊溢價。買方買的是「可負擔的奢侈品觸感」與社交貨幣 → 條件 A、D 成立；能否沉澱為回購與品牌資產，決定它是「借櫝揚珠」還是曇花。</li>
+        <li><b>茅台禮盒與酒瓶</b>：禮盒、飄帶、紙盒是送禮儀式與社交地位的載體（條件 D），原盒原瓶在二手市場另有價格；但空瓶回收曾催生「拔頭酒」造假，企業以 RFID 與防偽溯源把外部性內部化。</li>
+        <li><b>Supreme 紙袋 / 球鞋原盒 / iPhone 原廠盒</b>：二手市場「原盒完整、單據齊全」可溢價 5%–15%。此時櫝的功能是<b>真偽與品相的訊號</b>（條件 B），買下櫝完全理性，甚至降低了鑑定成本。</li>
+        <li><b>日本福袋、故宮文創、河南博物院「考古盲盒」</b>：買方目標函數本來就是驚喜、體驗與教育，內容物是載體的一部分 → 櫝珠合一，不存在「還珠」的損失。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 問題三 ===== -->
+<section id="q3">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-no">問</div>
+      <div><h2>問三 · 評估「善賣」，該看賣方動機還是買方結果？</h2><p>韓非其實用了兩把尺；我們需要把它們排成一個有優先序的架構。（點選卡片可標記已讀）</p></div>
+    </div>
+
+    <div class="verdict reveal" style="border-left-color:var(--indigo)">
+      <span class="tag" style="background:var(--indigo)">結論</span>
+      <p>應以<b>「買方在充分資訊下的長期結果」為主要標準</b>，並以<b>「賣方動機是否含欺瞞或操縱」作為否決性門檻（輔標準）</b>，再以外部性校正。理由：動機不可觀察而結果可度量；但只看結果會寬容黑暗模式與成本轉嫁，故「結果」必須被定義為長期福祉，而非首購數據。</p>
+    </div>
+
+    <div class="two reveal">
+      <div class="card">
+        <h3 style="margin-top:0">回到文本：韓非自己怎麼判？</h3>
+        <p style="font-size:.95rem;color:var(--ink2)">「此可謂善賣櫝矣，未可謂善鬻珠也。」這句話同時藏了兩把尺：</p>
+        <ul style="color:var(--ink2);font-size:.94rem;padding-left:1.2em">
+          <li style="margin-bottom:8px"><b style="color:var(--cinnabar-d)">賣方目標尺</b>：楚人的目的是賣珠，不是賣櫝。以其目標衡量，他失敗了——「善賣櫝」是反諷。</li>
+          <li><b style="color:var(--indigo)">功用結果尺</b>：韓非真正在意的是「用」。文飾若使人忘其用，對國家、對交易都是失敗（與「秦伯嫁女」「墨子為木鳶」同一邏輯）。</li>
+        </ul>
+        <p style="font-size:.93rem;color:var(--ink2)">關鍵在於：韓非的「功用」最終由<b>使用者</b>（百姓、君主、買方）實現，而非由生產者自我宣稱。因此以買方結果為主要標準，反而更貼近其思想本意。</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">四點論證：為何結果為主、動機為輔</h3>
+        <ol style="color:var(--ink2);font-size:.94rem;padding-left:1.3em;margin:0">
+          <li style="margin-bottom:10px"><b>可觀察性與可問責性</b>：意圖不可證，結果可度量（回購、退貨、投訴、NPS、LTV、廢棄量）。以動機為主標準，會落入道德審查與「動機表演」（漂綠、情懷行銷）的操縱空間。</li>
+          <li style="margin-bottom:10px"><b>反覆博弈的自我修正</b>：短期靠敘事可獲利，長期由買方結果淘汰。市場演化天然是結果主義的選擇機制。</li>
+          <li style="margin-bottom:10px"><b>與功用主義一致</b>：韓非重「用」，而「用」只能在使用端被驗證。</li>
+          <li><b>但結果主義有盲點</b>：好結果可能來自操縱性設計，或被外部化給第三人與未來世代。故需以動機門檻一票否決，並把外部性計入結果。</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="rule"></div>
+    <h3 class="reveal" style="letter-spacing:.08em;margin-bottom:14px">操作化：「善賣」的三層評估架構</h3>
+    <div class="layers reveal" id="layers">
+      <div class="layer"><div class="lt">L1<small>動機門檻</small></div><p><b>誠信檢核（具否決權）。</b>是否如實揭露成分／克重／機率／訂閱條款？是否誇大宣稱、製造焦慮、設計難以取消的路徑、鎖定未成年人？<b>任一不合格 → 直接判定「不善賣」，不再進入結果評分。</b></p></div>
+      <div class="layer"><div class="lt">L2<small>結果主體</small></div><p><b>買方長期效用（主要標準）。</b>核心功能達成度、事後滿意度、回購與留存、退貨與投訴、推薦意願。衡量的是「買的人究竟得到了什麼」，且必須是<b>知情狀態下</b>的結果。</p></div>
+      <div class="layer"><div class="lt">L3<small>結果外部</small></div><p><b>生態與永續（校正項）。</b>環境成本、健康與社會成本、賣方與平台的生存空間、產業長期信任。此層避免「買方結果」被窄化成單一消費者的短期爽感。</p></div>
+    </div>
+
+    <div class="scale-compare reveal" id="scaleBox">
+      <div class="sc motive">
+        <h4>若以「賣方動機」為主標準</h4>
+        <ul>
+          <li>優點：守住誠信與商業倫理，能提前否決詐欺性設計。</li>
+          <li>缺點：動機不可證，稽核與執法成本高；易滑向言論審查與「動機表演」。</li>
+          <li>風險：動機善良但產品無用（情懷商品、失敗的公益聯名），仍會被判為「善賣」。</li>
+        </ul>
+      </div>
+      <div class="sc result">
+        <h4>若以「買方結果」為主標準</h4>
+        <ul>
+          <li>優點：可度量、可比較、可問責；與市場的反覆博弈相容。</li>
+          <li>缺點：短期結果可被操縱（首購爆量、黑暗模式）；結果可被外部化。</li>
+          <li>修正：把「結果」定義為<b>知情下的長期福祉 + 外部性已計入</b>，並保留動機否決權。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="case-note reveal">
+      <h4>◈ 現代案例對照（問三）</h4>
+      <ul>
+        <li><b>Amazon Prime 註冊與取消流程</b>：短期結果亮眼（訂閱數、轉換率），但涉及被批評的「黑暗模式」。FTC 於 2024 年對其提起訴訟，並推動「Click to Cancel」規則 → 證明<b>只看結果不足</b>，動機門檻必須先行。</li>
+        <li><b>Patagonia「Don't Buy This Jacket」</b>：動機（反過度消費、修補與回收）與結果（忠誠度、營收成長、溢價能力）一致 → 誠信動機產生長期複利，L1 與 L2 同時得分的範本。</li>
+        <li><b>Lululemon 透視褲召回（2013）</b>：結果失敗（品質事故、下架），但動機無欺瞞且回應迅速 → 品牌得以修復。說明<b>動機清白能緩衝結果失敗</b>，反之則否。</li>
+        <li><b>Theranos</b>：動機含欺瞞、結果從未曾存在 → 雙重失敗，L1 一票否決的極端案例。</li>
+        <li><b>拼多多「僅退款」機制</b>：把「買方結果」推到極端，短期提升買方滿意，長期侵蝕賣方動機與商品品質，2024 年起各平台陸續調整 → 說明買方結果必須擴展為<b>交易生態的長期結果</b>（L3）。</li>
+        <li><b>花西子與「79 元」輿情（2023）</b>：當大眾開始以「克重單價」檢視品牌，等於把 L2 的量尺從情緒價值換回核心效用；敘事型品牌若無法在兩把尺上同時得分，溢價就會被重估。</li>
+      </ul>
+    </div>
+
+    <div class="card reveal" style="margin-top:20px;border-left:6px solid var(--cinnabar)">
+      <p style="margin:0;font-size:1.05rem;letter-spacing:.02em">一句話總括：<b style="color:var(--cinnabar-d)">「問他賣了什麼，不如問買的人得到了什麼；但買的人得到了什麼，必須以他不曾被騙為前提。」</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 案例庫 ===== -->
+<section id="cases" class="q-band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-no">參</div>
+      <div><h2>現代商業案例庫 · 十五則</h2><p>依標籤篩選，點「細讀」展開櫝／珠拆解、三要件判定與對應條件。</p></div>
+    </div>
+    <div class="filters reveal" id="filters"></div>
+    <div class="case-grid reveal" id="caseGrid"></div>
+  </div>
+</section>
+
+<!-- ===== 善賣指數 ===== -->
+<section id="calc">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-no">肆</div>
+      <div><h2>「善賣指數」評估器</h2><p>拉動六軸，為任一商品或品牌打分。系統依 L1 動機門檻 → L2 買方結果 → L3 外部性，給出判定。</p></div>
+    </div>
+    <div class="card reveal">
+      <h3 style="margin:0 0 6px">預設情境 · 一鍵載入對照</h3>
+      <div class="presets" id="presets"></div>
+      <p class="hint">↑ 載入後仍可手動微調任一軸，觀察判定如何變化。</p>
+    </div>
+    <div class="rule"></div>
+    <div class="calc">
+      <div class="card reveal" id="sliders"></div>
+      <div class="gauge reveal">
+        <div id="radarHost"></div>
+        <div class="score" id="scoreNum">0.0<small> / 10</small></div>
+        <div><span class="grade" id="grade">待評</span></div>
+        <p class="desc" id="desc">拉動左側六軸滑桿，開始評估。</p>
+        <div style="margin-top:16px"><button class="btn" id="saveCalc">完成評估 · 蓋「算」印</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 思辨投票 ===== -->
+<section id="debate" class="q-band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-no">伍</div>
+      <div><h2>思辨現場 · 選邊與反方論點</h2><p>選擇你的立場，即展開票數分布與正反論點對照。投票為本地模擬數據，僅供學習討論。</p></div>
+    </div>
+    <div id="voteBox"></div>
+  </div>
+</section>
+
+<!-- ===== 測驗 ===== -->
+<section id="quiz">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-no">陸</div>
+      <div><h2>學習檢定 · 八題</h2><p>作答後按「交卷」，即顯示正解、解析與成績。完成即得「證」印。</p></div>
+    </div>
+    <div class="score-board" id="scoreBoard">
+      <div class="big" id="finalScore">0 / 8</div>
+      <p id="finalMsg" style="margin:8px 0 0;color:var(--ink2)"></p>
+    </div>
+    <div id="quizBox"></div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:10px">
+      <button class="btn" id="submitQuiz">交 卷</button>
+      <button class="btn ghost" id="resetQuiz">重 作</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 結語 ===== -->
+<section id="final">
+  <div class="wrap">
+    <div class="final reveal">
+      <h3>結語 · 櫝珠之辨，實為本末之辨</h3>
+      <div class="quote">「此可謂善賣櫝矣，未可謂善鬻珠也。」</div>
+      <p>韓非不是在反對美。他反對的是<b style="color:#F0D878">「以文害用」</b>——當形式不再服務功用、反而吞噬功用時，交易就失去了它存在的理由。但在體驗經濟、訊號理論與主觀價值論的框架下，我們也必須承認：櫝可以合法地成為珠的一部分，甚至成為珠本身。</p>
+      <div class="takes">
+        <div class="take"><b>問一之答</b><p>不必然。須通過排擠、認知、事後三要件，才構成喧賓奪主與價值錯置；否則包裝是訊號與體驗的正當加值。</p></div>
+        <div class="take"><b>問二之答</b><p>當主觀價值倒置、可驗證性差異、稀缺資產屬性、目標函數不同、交易成本、賣方差異化六條件成立，且知情自願、外部性已內部化時，買櫝還珠是理性決策。</p></div>
+        <div class="take"><b>問三之答</b><p>以買方在充分資訊下的長期結果為主要標準，賣方誠信動機作為否決門檻，並以外部性校正（L1→L2→L3）。</p></div>
+      </div>
+      <p style="margin-top:24px">給學習者的三個帶走問題：<br>
+      ① 你上一次「買櫝」是什麼？事後滿意嗎？<br>
+      ② 你的產品、報告或簡報中，哪一部分是珠，哪一部分只是櫝？<br>
+      ③ 如果買方永遠不會轉頭看你的櫝，你的珠還站得住嗎？</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>買櫝還珠 · 價值之辨 ── 互動式學習頁<br>文本依據：《韓非子 · 外儲說左上》</div>
+    <div>案例與數據為教學用途之公開資訊整理，不構成投資或消費建議。<br>古風明亮主題 · 純前端互動 · 無外部相依</div>
+  </div>
+</footer>
+
+<div class="rail" id="rail"></div>
+<button class="totop" id="totop" title="回到頂部">↑</button>
+
+<script>
+/* =========================================================
+   資料
+========================================================= */
+var YUANWEN = [
+  {t:"楚人有賣其珠於鄭者，",
+   f:"有個楚國人要到鄭國去賣他的珍珠。",
+   n:"<em>鄭</em>：春秋戰國時期的鄭國，位於今河南一帶。此句交代交易場景——跨國販售，買方對賣方毫無認識，<em>資訊不對稱</em>從一開始就存在。"},
+  {t:"為木蘭之櫃，",
+   f:"他用名貴的木蘭木，做成了一個匣子（盒子）。",
+   n:"<em>木蘭</em>：香木，材質細緻、氣味清雅，本身即高成本材料。<em>櫃</em>：同「櫝」，匣子。這是「產品載體」的第一層投入——現代語彙即「包裝預算」。"},
+  {t:"薰以桂椒，綴以珠玉，飾以玫瑰，輯以翡翠。",
+   f:"用桂皮與花椒熏香，用珍珠美玉點綴，用玫瑰寶石裝飾，用翠鳥羽毛鑲嵌。",
+   n:"四道工序＝四層加值：<em>薰（嗅覺）</em>、<em>綴（材質）</em>、<em>飾（視覺）</em>、<em>輯（工藝）</em>。<em>玫瑰</em>古指美玉或紅寶石，非今日花卉；<em>輯</em>通「緝」，連綴、鑲嵌之意；<em>翡翠</em>指翠鳥羽毛，是當時極昂貴的裝飾工藝。四句連讀，正是「多感官體驗設計」的古典版本。"},
+  {t:"鄭人買其櫝而還其珠。",
+   f:"結果鄭國人買下了那個盒子，卻把珍珠還給了賣家。",
+   n:"<em>還</em>（音 huán）：歸還、退回。這是全則寓言的轉折點——交易確實完成了，但完成的是<em>另一筆交易</em>：賣出的是櫝，不是珠。用現代話說：轉換率達標，但賣錯了 SKU。"},
+  {t:"此可謂善賣櫝矣，未可謂善鬻珠也。",
+   f:"這只能說是善於賣盒子，不能說是善於賣珍珠啊。",
+   n:"<em>鬻</em>（音 yù）：賣。「善賣櫝」是反諷式肯定：行銷技術高超，但目標錯位。韓非以此比喻<em>以文害用</em>——言辭與形式掩蓋了功用；君主若被華美文辭吸引，就會像鄭人一樣買錯東西。"}
+];
+
+var WORDS = [
+  {w:"櫝",p:"dú",m:"匣子、盒子。交易的「載體」；現代的包裝、禮盒、品牌敘事與體驗設計。"},
+  {w:"珠",p:"zhū",m:"珍珠。交易的「本體」；現代的核心功能、產品力與真實使用價值。"},
+  {w:"鬻",p:"yù",m:"賣。「善鬻珠」＝真正善於把核心價值交付出去，而非只把東西推銷出去。"},
+  {w:"輯",p:"jí",m:"通「緝」，連綴、鑲嵌。指以翠鳥羽毛細密綴飾，是最高成本的工藝加值。"},
+  {w:"玫瑰",p:"méi guī",m:"古指美玉、紅寶石，非花卉。屬「飾」的層級，即視覺識別設計。"},
+  {w:"還",p:"huán",m:"歸還、退回。價值被退回，是「錯置」最具體、最可觀測的動作。"}
+];
+
+var ACC1 = [
+  {h:"為何「包裝更吸引人」本身不是錯？——訊號理論與搜尋成本",
+   b:'<p>在資訊不對稱市場中，買方無法直接觀察品質，只能依賴<b>可觀察的代理變數</b>。昂貴而精緻的包裝是一種「代價高昂的訊號」（costly signal）：只有對品質有信心的賣方，才敢承擔被模仿、被退貨與被投訴的風險。因此在<b>經驗財</b>與<b>信任財</b>（禮品、珠寶、高端酒水、保健品）上，包裝具有正當的資訊功能。</p><p><span class="pill blue">搜尋財</span>可先看後買，包裝的資訊價值低；<span class="pill gold">經驗財</span>要用了才知道，品牌與包裝是合理捷徑；<span class="pill red">信任財</span>連用了也難驗證（功效、成分、療效），此時包裝最容易被濫用，也最需要第三方認證與監管配套。</p><p>結論：包裝吸引力高，可能是<b>資訊補充</b>，也可能是<b>資訊扭曲</b>。二者必須用「認知要件」區分，不能一律視為錯置。</p>'},
+  {h:"情緒價值與體驗經濟：開箱儀式算不算「商品」？",
+   b:'<p>Pine 與 Gilmore 的體驗經濟指出：當商品與服務同質化，企業可以出售<b>體驗</b>本身。開箱的阻尼感、香氣、揭蓋順序與層次，都是被設計過的體驗產品，消費者願意付費，且事後滿意。</p><p>此時「櫝」並非寄生於「珠」，而是與珠共同構成一個複合商品。用經濟學語言說：買方的效用函數中，<b>包裝是獨立的自變數</b>，而不是干擾項。故宮文創、考古盲盒、節慶倒數日曆都屬此類。</p><p>但要劃出界線：當體驗設計的目的從「提升滿意」轉為「掩蓋不足」或「誘發成癮」（如無限抽卡、倒數計時、稀缺焦慮），它就越過認知要件，落入錯置。</p>'},
+  {h:"何時才叫「喧賓奪主」？——排擠效果的三種型態",
+   b:'<p><b>① 成本排擠：</b>包裝預算侵蝕原料與研發。月餅禮盒的木盒成本超過內容物即是典型；中國 GB 23350—2021 對包裝層數、空隙率與成本佔比設限，正是用標準阻止這種排擠。</p><p><b>② 注意力排擠：</b>行銷聲量掩蓋產品資訊，消費者只記得聯名與包裝，不記得規格、成分與條款——決策依據被置換。</p><p><b>③ 資源排擠（外部性）：</b>過度包裝產生廢棄物、送禮攀比與腐敗空間，成本由社會承擔。這是「錯置」最難被市場自我修正的部分，通常需要監管或企業自律介入。</p><p>只要上述排擠不存在，包裝的強勢就只是<b>差異化策略</b>，而非喧賓奪主。</p>'},
+  {h:"價值錯置的判準：一個反事實思想實驗",
+   b:'<p>請做這個測試：<b>「若把投在櫝上的每一分成本與注意力，全部移到珠上，買方的總效用會變高還是變低？」</b></p><p>若答案是「變高」→ 現在的配置是錯置的（櫝的邊際效用低於珠的邊際效用）。</p><p>若答案是「變低或持平」→ 櫝本身就是效用的來源，配置合理，甚至是最優。</p><p>這個反事實判準的優點是：它不依賴道德直覺，只依賴<b>邊際效用比較</b>，因此可對任何產業、任何時代的商品使用——從楚國的珠、鄭國的櫝，到今天的聯名杯、盲盒與禮盒。</p><p>操作建議：以 A/B 測試或問卷，分別測量「加強包裝版本」與「加強產品版本」的長期留存與 NPS，而非只比較首購轉換率。</p>'}
+];
+
+var CONDS = [
+  {k:"A",t:"主觀價值倒置",d:"對該買方而言，櫝的效用（審美、收藏、社交、再利用）高於珠的效用。價值是主觀的，不存在「客觀正確」的偏好。",e:"例：收藏者買限量禮盒只為展示；買特裝刷邊版書籍，閱讀則用電子書。"},
+  {k:"B",t:"可驗證性差異",d:"珠是難以驗證的信任財（真偽、功效、成分），櫝卻是可即時檢視的搜尋財。理性買方優先購買「能被驗證的價值」。",e:"例：二手 iPhone「原廠盒＋發票」可溢價，因盒是真偽訊號；不懂玉的人寧買帶證書與精盒者。"},
+  {k:"C",t:"稀缺與資產屬性",d:"櫝具限量、編號、IP 授權，可在二手市場流通甚至增值；珠則是隨處可得的大宗商品。此時櫝是資產，珠是耗材。",e:"例：Supreme 紙袋與貼紙、球鞋原盒、限量聯名周邊的轉售價格結構。"},
+  {k:"D",t:"目標函數不同",d:"本次交易的目的本來就是櫝：送禮儀式、拍照、佈置、收藏、支持偶像。珠只是搭售或附贈，不存在「還珠」的損失。",e:"例：節慶禮盒送的是關係與儀式；K-POP 專輯買的是小卡與「銷量貢獻」。"},
+  {k:"E",t:"交易成本考量",d:"驗證、退回、更換珠的成本（鑑定費、時間、風險、人情）高於其收益時，接受櫝、退回珠是成本最小解。",e:"例：跨境退貨成本過高；禮物不宜拆封，只保留外包裝作為心意載體。"},
+  {k:"F",t:"賣方的合理差異化",d:"以櫝建立辨識度、開拓新客群、取得溢價並累積品牌資產，同時未歪曲核心價值的呈現。這是正當行銷，而非欺瞞。",e:"例：Tiffany 藍盒被商標化；故宮文創以禮盒承載文化敘事，同時產品品質達標。"}
+];
+
+var CASES = [
+  {n:"Apple 產品包裝與開箱儀式",y:"2001—至今",tag:"櫝以彰珠",tc:"pos",
+   du:"極簡白盒、精準阻尼、無膠帶、紙纖維材質，開箱順序被工業設計團隊反覆調校",
+   zhu:"硬體性能、晶片、作業系統生態、保固與服務",
+   an:"包裝成本佔售價比極低，卻顯著提升感知價值與品牌資產；未排擠研發預算，退貨率低、回購與 NPS 高。",
+   more:"三要件檢驗：排擠 ✗、認知 ✗（包裝如實反映產品定位）、事後 ✗（滿意度高）。因此屬於「訊號與體驗」的正當加值。近年改用全紙包裝、取消塑膠外膜，是把 L3 外部性納入設計的例子。",
+   cond:["體驗增益","訊號功能"]},
+  {n:"Tiffany Blue Box",y:"1886—至今",tag:"櫝即信物",tc:"pos",
+   du:"知更鳥蛋藍禮盒（Pantone 1837）＋白緞帶，已註冊為商標",
+   zhu:"鑽石、銀飾與珠寶工藝",
+   an:"盒子是品質、真品與情感承諾的訊號裝置；品牌傳統上盒子不得單賣，反而強化其訊號價值。",
+   more:"當「櫝」被法律保護為商標，它就從容器變成品牌資產本身。買方支付的溢價對應鑑定、保值與儀式感，屬資訊功能而非錯置。",
+   cond:["B 可驗證性","D 目標函數"]},
+  {n:"月餅禮盒過度包裝",y:"長期議題 · 2021 新制",tag:"以文害用",tc:"neg",
+   du:"多層木盒、緞面、鍍金配件，甚至附贈餐具與酒",
+   zhu:"月餅（食品）",
+   an:"包裝成本可能遠超內容物，並衍生送禮攀比與廢棄物；GB 23350—2021 明定包裝層數、空隙率與成本佔比上限。",
+   more:"三要件全部成立：成本排擠（預算流向盒子）、認知扭曲（以禮盒推斷品質與誠意）、事後與外部性（廢棄、人情重負）。是監管介入的正當案例。",
+   cond:["反例：三要件成立"]},
+  {n:"星巴克 貓爪杯",y:"2019",tag:"櫝化為珠",tc:"mid",
+   du:"限量雙層玻璃貓爪杯，售價 599 元",
+   zhu:"咖啡（飲品）",
+   an:"開賣秒殺、代購溢價、門市排隊與衝突事件。杯（容器）完全取代飲品成為購買目的。",
+   more:"對買方是條件 A＋D：目標函數就是杯子與社交展示，屬理性。對品牌是極高性價比的聲量操盤；但一次性客流能否轉為長期留存，考驗的是「珠」的承接力。",
+   cond:["A 主觀價值","D 目標函數","C 稀缺"]},
+  {n:"喜茶 × FENDI「FENDI 喜悅黃」",y:"2023",tag:"借櫝揚珠",tc:"mid",
+   du:"聯名杯套、徽章、紙袋與門市視覺",
+   zhu:"19 元起的茶飲",
+   an:"以極低價格取得「可負擔的奢侈品觸感」，社群刷屏、門店爆單、二手周邊溢價。",
+   more:"典型的社交貨幣型「買櫝」。判準在於：熱度過後是否留下品牌資產與回購。若只有單日聲量而無留存，就會滑向價值錯置。",
+   cond:["A 主觀價值","F 差異化"]},
+  {n:"泡泡瑪特盲盒 · LABUBU",y:"2016—至今",tag:"櫝珠易位",tc:"mid",
+   du:"盲盒外盒、抽選機率、IP 造型與隱藏款機制",
+   zhu:"塑膠玩偶（幾乎無使用功能）",
+   an:"對收藏者而言，不確定性與社交展示本身就是商品；2024 年海外熱潮帶動營收與二手溢價數十倍。",
+   more:"監管：市場監管總局《盲盒經營行為規範指引（試行）》（2023）要求公示抽取機率、限制向 8 周歲以下未成年人銷售、禁止誘導過度消費。說明此模式「個體理性、需設邊界」。",
+   cond:["A 主觀價值","C 稀缺","需 L1 門檻"]},
+  {n:"K-POP 實體專輯與隨機小卡",y:"2015—至今",tag:"櫝重珠輕",tc:"neg",
+   du:"寫真冊、隨機小卡、海報、精裝盒",
+   zhu:"音樂（串流平台即可取得）",
+   an:"粉絲重複購買同一專輯只為抽卡與衝銷量榜；Circle Chart 統計 2023 年韓國實體專輯銷量突破一億張。",
+   more:"個體層面符合條件 A、C、D（收藏、社交、以購買量表達支持）；產業層面則產生巨量廢棄與外部性，催生粉絲自發回收運動、可回收包裝與數位小卡等改良。",
+   cond:["A 主觀價值","外部性未內部化"]},
+  {n:"鍾薛高「雪糕刺客」",y:"2018—2023",tag:"文勝質則史",tc:"neg",
+   du:"瓦片造型、國潮敘事、高端通路與文案、高價定位",
+   zhu:"雪糕的口感、原料與性價比",
+   an:"敘事溢價未被核心產品支撐；2023 年輿情風波與創辦人「愛要不要」言論，加上後續欠款與股權凍結，品牌迅速失血。",
+   more:"事後要件完全成立：消費者感覺被定價與敘事冒犯，回購崩塌。是「以結果為主標準」最有力的證據——動機再會說故事，結果會說話。",
+   cond:["反例：事後效用崩塌"]},
+  {n:"花西子 東方彩妝",y:"2017—至今",tag:"文質待衡",tc:"mid",
+   du:"苗銀雕花、同心鎖、東方美學敘事與禮盒",
+   zhu:"膏體品質、妝效、克重與單價",
+   an:"高辨識度與高毛利；2023 年「79 元」直播事件使大眾改以「克重單價」檢視，暴露敘事與性價比的張力。",
+   more:"介於價值創造與價值錯置之間：包裝確實承載文化與審美效用（合理），但當量尺從情緒價值換回核心效用時，溢價必須重新被證明。",
+   cond:["A 主觀價值","F 差異化","L2 待驗證"]},
+  {n:"IKEA 平板包裝 / Amazon 免挫折包裝",y:"1956 / 2008—",tag:"去櫝存珠",tc:"str",
+   du:"極簡、可拆、可回收、無多餘印刷",
+   zhu:"家具功能、商品本體與配送效率",
+   an:"刻意弱化「櫝」以降低成本、減少損壞、提升拆裝體驗與環保形象。",
+   more:"證明包裝吸引力的最優值不是最大值，而是與價值主張匹配。對成本敏感、機能導向的客群，「減包裝」本身就是差異化與信任訊號。",
+   cond:["F 差異化","L3 外部性"]},
+  {n:"Lush 裸包裝（Naked Packaging）",y:"2005—至今",tag:"無櫝之櫝",tc:"str",
+   du:"取消外包裝，以商品本體造型與門市氣味作為識別",
+   zhu:"沐浴球、皂品、護髮產品的成分與功效",
+   an:"「沒有包裝」反而成為最強的品牌訊號與價值主張，同時大幅降低廢棄物。",
+   more:"L1 動機（環保、反過度消費）與 L2 結果（忠誠客群、溢價能力）一致，L3 外部性為正。是動機與結果同向的範本。",
+   cond:["L1 誠信","L3 外部性"]},
+  {n:"茅台禮盒與酒瓶回收",y:"長期",tag:"櫝為禮器",tc:"mid",
+   du:"瓷瓶、飄帶、紙盒、防偽標籤、禮盒儀式",
+   zhu:"白酒本身",
+   an:"禮盒是送禮儀式與社交地位的載體；原盒原瓶在二手市場另有價格，符合條件 B、D。",
+   more:"但空瓶回收曾催生「拔頭酒」造假，形成負外部性；企業以 RFID、防偽溯源與官方回收把成本內部化，是 L3 的正面示範。",
+   cond:["B 可驗證性","D 目標函數","L3 校正"]},
+  {n:"Supreme 紙袋 / 球鞋原盒轉售",y:"1994—至今",tag:"櫝作保人",tc:"pos",
+   du:"購物袋、貼紙、鞋盒、防塵紙、收據",
+   zhu:"服飾與鞋款本體",
+   an:"二手市場中「原盒完整」可溢價 5%–15%；櫝承擔真偽、品相與來源的訊號功能。",
+   more:"此時買下櫝完全理性：它降低了鑑定成本與交易風險。也說明包裝在二手市場會資本化為資產價格的一部分。",
+   cond:["B 可驗證性","C 資產屬性"]},
+  {n:"故宮文創 / 河南博物院考古盲盒",y:"2013—至今",tag:"櫝珠合一",tc:"pos",
+   du:"文化禮盒、仿古包裝、可挖掘的土塊與工具",
+   zhu:"複製文物小件、文化知識與動手體驗",
+   an:"買方的目標函數是教育、體驗與文化認同，包裝即內容，不存在「還珠」的損失。",
+   more:"此類產品的 L2 結果（滿意度、回購、教育效益）與 L3（文化傳承、博物館營收自主）同為正值，是「櫝珠合一」的理想型態。",
+   cond:["D 目標函數","A 主觀價值"]},
+  {n:"Amazon Prime 訂閱與「一鍵下單」",y:"2005—至今",tag:"機心之戒",tc:"neg",
+   du:"免費試用、預設續訂、隱晦的取消路徑、一鍵購買",
+   zhu:"配送速度、影音與購物服務",
+   an:"短期結果亮眼（訂閱規模、轉換率），但涉及被批評的黑暗模式：讓「加入」容易、「離開」困難。",
+   more:"FTC 於 2024 年對 Amazon Prime 的註冊與取消流程提起訴訟，並推動「Click to Cancel」規則。核心教訓：<b>只看買方短期結果不足以評估善賣，必須先過 L1 動機門檻。</b>",
+   cond:["L1 門檻未過","需監管校正"]}
+];
+
+var AXES = [
+  {k:"trans",n:"資訊透明",d:"成分、克重、機率、條款如實揭露（L1 動機門檻）",w:1.15},
+  {k:"core",n:"核心效用",d:"珠的功能是否真正解決問題、是否經得起使用",w:1.25},
+  {k:"exp",n:"體驗增益",d:"櫝帶來的情緒、社交、儀式價值是否真實被需要",w:0.85},
+  {k:"after",n:"事後滿意",d:"回購、留存、退貨率、NPS、投訴量（L2 主體）",w:1.2},
+  {k:"ext",n:"外部性控制",d:"環境、健康、未成年人、賣方與產業生態（L3）",w:1.0},
+  {k:"price",n:"溢價正當",d:"價格與交付價值對應，而非純敘事炒作",w:1.0}
+];
+
+var PRESETS = {
+  "精品禮盒（Tiffany 型）":[9,9,9,9,7,8],
+  "過度包裝月餅禮盒":[6,4,7,4,2,3],
+  "盲盒 / IP 收藏":[7,3,10,8,4,6],
+  "訂閱制黑暗模式":[2,7,5,5,4,5],
+  "裸包裝品牌（Lush 型）":[10,8,6,9,10,8],
+  "敘事型網紅品牌":[5,4,9,4,5,3],
+  "文化文創禮盒":[9,7,9,9,9,8]
+};
+
+var VOTES = [
+  {q:"包裝的吸引力超過商品本身，是否「必然」構成喧賓奪主、價值錯置？",
+   opts:[{t:"必然。文勝質則史，形式一旦壓過內容就是錯置。",v:212},
+         {t:"不必然。要看排擠、認知、事後三要件是否成立。",v:486},
+         {t:"包裝本來就是商品的一部分，無所謂主客之分。",v:198}],
+   pro:["包裝是訊號：資訊不對稱下，昂貴包裝可作為品質承諾，降低買方的搜尋與鑑定成本。","開箱儀式與禮盒承載情緒、社交效用，是買方真實想要的東西，屬獨立自變數。","體驗經濟中，載體與內容共同構成複合商品；把櫝的成本全移給珠，總效用反而下降。"],
+   con:["成本排擠：包裝預算侵蝕原料與研發，如月餅禮盒的木盒貴過內容物。","認知扭曲：以「包裝＝品質」推論，是行銷操縱而非資訊補充。","外部性：廢棄物、攀比性送禮與資源錯置由社會承擔，市場不會自我修正。"]},
+  {q:"你是否曾為了限量聯名「盒／周邊」，買下其實不需要的內容物？",
+   opts:[{t:"會。收藏與社交價值對我而言就是核心價值。",v:305},
+         {t:"不會。我只為使用價值付費。",v:271},
+         {t:"看轉售價值——若能保值或增值，我會買。",v:243}],
+   pro:["主觀價值論：只要知情、自願、事後滿意，偏好無須被他人評判。","稀缺與資產屬性：限量盒具二手流通性，本質是收藏資產而非耗材。","目標函數不同：送禮、拍照、佈置、支持偶像，櫝就是本次交易的真正標的。"],
+   con:["機率與條款若不透明（隱藏款、抽選機制），知情前提被破壞，理性不成立。","成癮性設計與攀比壓力，特別是對未成年人，屬必須否決的情境。","重複購買與廢棄造成資源浪費，外部性未被計入個人決策。"]},
+  {q:"評估一家企業是否「善賣」，你認為主要標準應該是？",
+   opts:[{t:"賣方動機：是否誠實、是否以交付價值為初衷。",v:189},
+         {t:"買方結果：回購、滿意度、留存等可度量指標。",v:264},
+         {t:"雙重架構：動機為否決門檻，買方長期結果為主體。",v:512}],
+   pro:["動機不可觀察，結果可度量：回購率、退貨率、NPS、投訴量都能稽核與問責。","市場是反覆博弈，結果是演化上的穩定選擇機制——敘事終究會被驗證。","韓非重「功用」，而功用只能在使用端被實現，不由生產者自我宣稱。"],
+   con:["好結果可能來自操縱：一鍵下單、預設續訂、成癮演算法都能推高短期指標。","結果可被外部化：環境、健康、賣方與平台生態的損害不在財報上。","只看結果會獎勵「會演」的企業，懲罰誠實但不擅行銷的企業，故需動機門檻。"]}
+];
+
+var QUIZ = [
+  {q:"「買櫝還珠」這則寓言出自下列哪部典籍？",
+   o:["《呂氏春秋》","《韓非子·外儲說左上》","《戰國策·齊策》","《莊子·外物》"],a:1,
+   e:"出自《韓非子·外儲說左上》。脈絡是田鳩向楚王解釋墨子為何「言多而不辯」，並舉「秦伯嫁女」「楚人鬻珠」為喻。"},
+  {q:"「輯以翡翠」中的「輯」，正確解釋是？",
+   o:["編輯文字","通「緝」，連綴、鑲嵌","收集保管","排列整齊"],a:1,
+   e:"「輯」通「緝」，指以翠鳥羽毛細密連綴、鑲嵌裝飾。「翡翠」在此指翠鳥羽毛，是當時極昂貴的裝飾工藝，不是玉石。"},
+  {q:"韓非說「此可謂善賣櫝矣，未可謂善鬻珠也」，其核心批評是？",
+   o:["楚人定價過高","鄭人不識貨","以文害用：形式掩蓋功用，目標錯位","木蘭之櫃工藝不佳"],a:2,
+   e:"韓非批評的是「以文害用」——文飾過盛使人忘其本。楚人的目的是賣珠，卻因櫝太美而只賣出櫝，屬行銷技術高超但目標錯位。"},
+  {q:"依訊號理論，昂貴包裝在下列哪類商品上最可能具有「正當的資訊功能」？",
+   o:["規格完全可檢視的搜尋財（如標準螺絲）","難以驗證品質的經驗財與信任財（如珠寶、高端禮品）","所有商品都無資訊功能","只有數位商品"],a:1,
+   e:"對經驗財、信任財而言，買方無法直接觀察品質，昂貴而難以偽造的包裝可作為 costly signal，具正當資訊功能；但對信任財也最容易被濫用，故需第三方認證與監管配套。"},
+  {q:"下列何者「最」可能構成價值錯置（三要件皆成立）？",
+   o:["Apple 的極簡高阻尼包裝盒","Tiffany 的註冊商標藍色禮盒","包裝成本遠超內容物、層數過多的月餅禮盒","IKEA 的平板包裝"],a:2,
+   e:"月餅禮盒常見成本排擠（預算流向盒子）、認知扭曲（以禮盒推斷誠意與品質）、事後與外部性（廢棄、人情攀比）。中國 GB 23350—2021 即以標準限制此類過度包裝。"},
+  {q:"關於 K-POP 專輯與隨機小卡的「買櫝還珠」，下列分析何者最完整？",
+   o:["純屬非理性，應全面禁止","對粉絲個體可能理性（收藏、社交、支持偶像），但產業層面產生重複購買與廢棄的外部性，需自律與規範","完全合理，沒有任何問題","只是行銷噱頭，與經濟學無關"],a:1,
+   e:"個體層面符合主觀價值倒置、稀缺資產、目標函數不同等條件；產業層面則有資源浪費的外部性。因此業者推出可回收包裝與數位收藏卡等改良，屬「合理但需設邊界」。"},
+  {q:"本文主張評估「善賣」的架構是？",
+   o:["只看賣方動機是否良善","只看買方短期購買數據","以買方在充分資訊下的長期結果為主標準，賣方誠信動機作為否決門檻，並以外部性校正","由政府直接定價"],a:2,
+   e:"動機不可觀察，但可作為誠信門檻（一票否決）；結果可度量，故為主體；再納入環境、健康與產業生態等外部性，避免把「買方結果」窄化為首購數據。"},
+  {q:"FTC 對 Amazon Prime 註冊與取消流程的訴訟（2024），在本文框架中說明什麼？",
+   o:["買方短期結果好，就代表善賣","黑暗模式能推高短期指標，因此只看結果不足，必須先過動機門檻","包裝不重要","訂閱制必然失敗"],a:1,
+   e:"訂閱制的轉換率與留存數據可能亮眼，但若來自「加入容易、離開困難」的操縱性設計，L1 動機門檻即不合格，直接判定不善賣。"}
+];
+
+var STAMPS = [
+  {k:"read",c:"讀",t:"讀 · 通曉原文",go:"#yuanwen"},
+  {k:"ana",c:"析",t:"析 · 三問展開",go:"#q1"},
+  {k:"vote",c:"辨",t:"辨 · 思辨表態",go:"#debate"},
+  {k:"calc",c:"算",t:"算 · 善賣指數",go:"#calc"},
+  {k:"quiz",c:"證",t:"證 · 學習檢定",go:"#quiz"}
+];
+
+/* =========================================================
+   工具
+========================================================= */
+function $(s,c){return (c||document).querySelector(s);}
+function $$(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));}
+var got = {};
+
+function grant(key){
+  if(got[key])return;
+  got[key]=true;
+  $$('[data-k="'+key+'"]').forEach(function(el){
+    el.classList.add("got");
+    if(el.dataset.t)el.title=el.dataset.t+"（已得）";
+  });
+}
+
+/* 面板開合（動態高度，避免內容被裁切） */
+function openPanel(el){
+  el.dataset.open="1";
+  el.style.maxHeight=el.scrollHeight+"px";
+  clearTimeout(el._pt);
+  el._pt=setTimeout(function(){ if(el.dataset.open==="1") el.style.maxHeight="none"; },620);
+}
+function closePanel(el){
+  el.dataset.open="0";
+  clearTimeout(el._pt);
+  el.style.maxHeight=el.scrollHeight+"px";
+  void el.offsetHeight;
+  el.style.maxHeight="0px";
+}
+function refreshPanels(){
+  $$("[data-open='1']").forEach(function(el){ el.style.maxHeight="none"; });
+}
+
+/* 印章軌道 + 行動版印章列 */
+(function(){
+  $("#rail").innerHTML = STAMPS.map(function(s){
+    return '<div class="stamp" data-k="'+s.k+'" data-t="'+s.t+'" data-go="'+s.go+'" title="'+s.t+'（未得）">'+s.c+'<span class="tip">'+s.t+'</span></div>';
+  }).join("");
+  $("#stampMini").innerHTML = STAMPS.map(function(s){
+    return '<div class="ms" data-k="'+s.k+'" data-go="'+s.go+'" title="'+s.t+'">'+s.c+'</div>';
+  }).join("");
+  document.addEventListener("click",function(e){
+    var st=e.target.closest("[data-go]");
+    if(!st)return;
+    if(st.classList.contains("hq")){/* hero cards */}
+    var t=$(st.dataset.go);
+    if(t)t.scrollIntoView({behavior:"smooth",block:"start"});
+  });
+})();
+
+/* =========================================================
+   原文卷軸
+========================================================= */
+(function(){
+  var box=$("#ywList");
+  box.innerHTML = YUANWEN.map(function(s,i){
+    return '<div class="yw-line" data-i="'+i+'"><span class="mark">〇</span>'+s.t+'</div>'+
+           '<div class="yw-trans" id="tr'+i+'"><div class="inner"><b style="color:var(--cinnabar-d)">白話：</b>'+s.f+
+           '<div class="yw-note"><b>注釋：</b>'+s.n+'</div></div></div>';
+  }).join("");
+
+  function toggle(line){
+    var i=line.dataset.i, tr=$("#tr"+i);
+    var open=line.classList.toggle("on");
+    if(open){ openPanel(tr); line.dataset.done="1";
+      var total=$$(".yw-line",box).length, done=$$(".yw-line[data-done='1']",box).length;
+      if(done===total)grant("read");
+    } else { closePanel(tr); }
+  }
+  box.addEventListener("click",function(e){
+    var line=e.target.closest(".yw-line"); if(line)toggle(line);
+  });
+  $("#ywAll").addEventListener("click",function(){
+    var lines=$$(".yw-line",box);
+    var allOpen=lines.every(function(l){return l.classList.contains("on");});
+    lines.forEach(function(l){
+      if(allOpen){ if(l.classList.contains("on"))toggle(l); }
+      else { if(!l.classList.contains("on"))toggle(l); }
+    });
+    this.textContent=allOpen?"全部展開注釋":"全部收合注釋";
+  });
+  $("#wordGrid").innerHTML = WORDS.map(function(w){
+    return '<div class="word"><b>'+w.w+'</b><i>'+w.p+'</i><span>'+w.m+'</span></div>';
+  }).join("");
+})();
+
+/* =========================================================
+   手風琴（問一）
+========================================================= */
+(function(){
+  var el=$("#acc1");
+  el.innerHTML = ACC1.map(function(it,i){
+    return '<div class="acc reveal" data-i="'+i+'">'+
+      '<div class="acc-h"><span class="no">'+(i+1)+'</span><span>'+it.h+'</span><span class="arw">▼</span></div>'+
+      '<div class="acc-b"><div class="inner">'+it.b+'</div></div></div>';
+  }).join("");
+
+  function setAcc(acc,open){
+    var body=$(".acc-b",acc);
+    acc.classList.toggle("open",open);
+    if(open){ openPanel(body); acc.dataset.done="1"; markQ("q1"); }
+    else closePanel(body);
+  }
+  el.addEventListener("click",function(e){
+    var h=e.target.closest(".acc-h"); if(!h)return;
+    var acc=h.parentElement;
+    setAcc(acc,!acc.classList.contains("open"));
+    revealAll();
+  });
+  $("#accAll").addEventListener("click",function(){
+    var accs=$$(".acc",el);
+    var allOpen=accs.every(function(a){return a.classList.contains("open");});
+    accs.forEach(function(a){ setAcc(a,!allOpen); });
+    this.textContent=allOpen?"展開全部論證":"收合全部論證";
+    revealAll();
+  });
+})();
+
+var qSeen={};
+function markQ(k){
+  qSeen[k]=true;
+  if(qSeen.q1&&qSeen.q2&&qSeen.q3)grant("ana");
+}
+
+/* 問二條件卡 */
+(function(){
+  var g=$("#condGrid");
+  g.innerHTML=CONDS.map(function(c){
+    return '<div class="cond"><div class="k">'+c.k+'</div><h4>'+c.t+'</h4><p>'+c.d+'</p><div class="eg">'+c.e+'</div></div>';
+  }).join("");
+  g.addEventListener("click",function(e){
+    var c=e.target.closest(".cond");
+    if(c){ c.classList.add("seen"); markQ("q2"); }
+  });
+})();
+
+/* 問三 */
+(function(){
+  var q3=$("#q3");
+  q3.addEventListener("click",function(e){
+    var t=e.target.closest(".layer")||e.target.closest(".sc");
+    if(t){ t.classList.add("seen"); markQ("q3"); }
+  });
+})();
+
+/* =========================================================
+   案例庫
+========================================================= */
+var TAGMAP={pos:["tag-pos","正面"],neg:["tag-neg","反面"],mid:["tag-mid","雙面"],str:["tag-str","策略"]};
+var curFilter="all", allOpen=false;
+
+function renderCases(){
+  var grid=$("#caseGrid");
+  var list=CASES.filter(function(c){return curFilter==="all"||c.tc===curFilter;});
+  grid.innerHTML=list.map(function(c){
+    var idx=CASES.indexOf(c);
+    return '<div class="cc" data-i="'+idx+'">'+
+      '<div class="cc-top"><span class="cc-tag '+TAGMAP[c.tc][0]+'">'+TAGMAP[c.tc][1]+'</span>'+
+      '<h4>'+c.n+'</h4><div class="yr">'+c.y+'</div></div>'+
+      '<div class="cc-dz"><div class="d"><b>櫝 · 載體</b>'+c.du+'</div><div class="z"><b>珠 · 本體</b>'+c.zhu+'</div></div>'+
+      '<div class="cc-body">'+c.an+'</div>'+
+      '<div class="cc-more"><div class="inner"><p>'+c.more+'</p><div>'+
+        c.cond.map(function(x){return '<span class="pill gold">'+x+'</span>';}).join("")+'</div></div></div>'+
+      '<div class="cc-foot"><span class="cc-verdict">判語「'+c.tag+'」</span><button class="cc-btn">細讀 ▾</button></div></div>';
+  }).join("");
+  if(allOpen)$$("#caseGrid .cc").forEach(function(cc){
+    cc.classList.add("open");
+    var b=$(".cc-more",cc);b.dataset.open="1";b.style.maxHeight="none";
+    $(".cc-btn",cc).textContent="收起 ▴";
+  });
+}
+$("#filters").innerHTML=[["all","全部 "+CASES.length],["pos","櫝以彰珠"],["mid","櫝珠易位"],["neg","以文害用"],["str","反向策略"]]
+  .map(function(p,i){return '<button class="fbtn'+(i===0?" on":"")+'" data-f="'+p[0]+'">'+p[1]+'</button>';}).join("")
+  +'<button class="fbtn alt" id="caseAll">全部細讀</button>';
+$("#filters").addEventListener("click",function(e){
+  if(e.target.id==="caseAll"){
+    allOpen=!allOpen;
+    e.target.textContent=allOpen?"全部收合":"全部細讀";
+    $$("#caseGrid .cc").forEach(function(cc){
+      var b=$(".cc-more",cc), btn=$(".cc-btn",cc);
+      cc.classList.toggle("open",allOpen);
+      btn.textContent=allOpen?"收起 ▴":"細讀 ▾";
+      if(allOpen)openPanel(b); else closePanel(b);
+    });
+    return;
+  }
+  var b=e.target.closest(".fbtn"); if(!b||!b.dataset.f)return;
+  $$(".fbtn[data-f]").forEach(function(x){x.classList.remove("on");});
+  b.classList.add("on");
+  curFilter=b.dataset.f; renderCases(); revealAll();
+});
+$("#caseGrid").addEventListener("click",function(e){
+  var btn=e.target.closest(".cc-btn"); if(!btn)return;
+  var cc=btn.closest(".cc"), body=$(".cc-more",cc);
+  var open=cc.classList.toggle("open");
+  btn.textContent=open?"收起 ▴":"細讀 ▾";
+  if(open)openPanel(body); else closePanel(body);
+});
+renderCases();
+
+/* =========================================================
+   善賣指數 · 雷達圖
+========================================================= */
+var vals=[5,5,5,5,5,5], disp=[5,5,5,5,5,5], raf=null;
+var CX=170, CY=150, R=104;
+function pt(i,r){var a=-Math.PI/2+i*Math.PI/3;return [CX+r*Math.cos(a),CY+r*Math.sin(a)];}
+(function buildRadar(){
+  var g="";
+  [0.2,0.4,0.6,0.8,1].forEach(function(f){
+    var p=AXES.map(function(_,i){return pt(i,R*f).join(",");}).join(" ");
+    g+='<polygon points="'+p+'" fill="none" stroke="rgba(192,149,43,.35)" stroke-width="1"/>';
+  });
+  AXES.forEach(function(ax,i){
+    var e=pt(i,R), l=pt(i,R+28);
+    g+='<line x1="'+CX+'" y1="'+CY+'" x2="'+e[0]+'" y2="'+e[1]+'" stroke="rgba(43,38,32,.18)" stroke-width="1"/>';
+    var anchor = l[0]<CX-6 ? "end" : (l[0]>CX+6 ? "start" : "middle");
+    g+='<text x="'+l[0]+'" y="'+(l[1]+4)+'" font-size="12.5" font-weight="700" fill="#5B5145" text-anchor="'+anchor+'" font-family="Noto Serif TC,serif">'+ax.n+'</text>';
+  });
+  g+='<polygon id="rPoly" points="" fill="rgba(180,35,31,.20)" stroke="#B4231F" stroke-width="2.4" stroke-linejoin="round"/><g id="rDots"></g>';
+  $("#radarHost").innerHTML='<svg viewBox="0 0 340 300" style="width:100%;height:auto;display:block">'+g+'</svg>';
+})();
+function drawRadar(){
+  var poly=$("#rPoly"); if(!poly)return;
+  poly.setAttribute("points",disp.map(function(v,i){return pt(i,R*v/10).join(",");}).join(" "));
+  $("#rDots").innerHTML=disp.map(function(v,i){
+    var p=pt(i,R*v/10);
+    return '<circle cx="'+p[0]+'" cy="'+p[1]+'" r="4" fill="#B4231F" stroke="#FFF6E8" stroke-width="1.6"/>';
+  }).join("");
+}
+function tween(){
+  if(raf)cancelAnimationFrame(raf);
+  (function step(){
+    var done=true;
+    disp=disp.map(function(v,i){
+      var nv=v+(vals[i]-v)*0.22;
+      if(Math.abs(nv-vals[i])>0.02)done=false;
+      return nv;
+    });
+    if(done)disp=vals.slice();
+    drawRadar();
+    raf=done?null:requestAnimationFrame(step);
+  })();
+}
+function evaluate(){
+  var wsum=AXES.reduce(function(s,a){return s+a.w;},0);
+  var score=AXES.reduce(function(s,a,i){return s+a.w*vals[i];},0)/wsum;
+  var gap=vals[2]-vals[1], grade, desc;
+  if(vals[0]<3.5){
+    grade="L1 未過 · 不善賣";
+    desc="資訊透明不足，動機門檻未通過。無論其他分數多高，都應直接判定「不善賣」——這是黑暗模式與誇大宣稱的典型特徵。先補揭露，再談行銷。";
+  }else if(score>=8.2){
+    grade="善鬻珠也";
+    desc="櫝珠相得：核心效用強、體驗加值真實、事後滿意且外部性已內部化。此即韓非所許的「善鬻珠」——真正交付了價值，而非只交付了聲量。";
+  }else if(score>=6.4){
+    grade="櫝珠相得";
+    desc="整體健康，仍有優化空間。建議檢視最低分的那一軸：它通常就是品牌最脆弱的一條腿，也是最容易被對手攻擊的缺口。";
+  }else if(score>=4.6){
+    grade="善賣櫝矣";
+    desc="行銷效能高但價值交付不足——正是韓非的反諷：「此可謂善賣櫝矣，未可謂善鬻珠也。」短期可獲利，長期由回購與口碑清算。";
+  }else{
+    grade="買櫝還珠 · 價值錯置";
+    desc="排擠、認知、事後三要件皆成立：資源流向載體，核心效用不彰，買方事後後悔且外部性未獲補償。應立即重新配置預算。";
+  }
+  if(gap>=4&&vals[0]>=5){
+    grade="櫝重於珠";
+    desc="體驗增益遠高於核心效用。這未必是錯——若買方的目標函數本就是收藏、社交或儀式（條件 A、D），則屬理性；但必須確認資訊透明與外部性已處理，否則即滑向價值錯置。";
+  }
+  $("#scoreNum").innerHTML=score.toFixed(1)+"<small> / 10</small>";
+  var gr=$("#grade"); gr.textContent=grade;
+  gr.style.background = vals[0]<3.5 ? "#8A1916" : (score>=8.2 ? "#3F7A5E" : (score>=6.4 ? "#C0952B" : (score>=4.6 ? "#B4231F" : "#5B5145")));
+  $("#desc").textContent=desc;
+}
+(function buildSliders(){
+  $("#sliders").innerHTML='<h3 style="margin:0 0 14px;letter-spacing:.08em">六軸評分（0–10）</h3>'+
+    AXES.map(function(a,i){
+      return '<div class="slider-row"><label>'+a.n+'<span class="v" id="v'+i+'">'+vals[i]+'</span></label>'+
+             '<small>'+a.d+'</small>'+
+             '<input type="range" min="0" max="10" step="0.5" value="'+vals[i]+'" data-i="'+i+'"></div>';
+    }).join("")+
+    '<div style="margin-top:14px;padding-top:14px;border-top:1px dashed var(--line2);font-size:.85rem;color:var(--ink3)">'+
+    '◎ 權重：核心效用 1.25、事後滿意 1.20、資訊透明 1.15、外部性 1.00、溢價正當 1.00、體驗增益 0.85。<br>'+
+    '◎ 特殊規則：資訊透明 &lt; 3.5 直接觸發 L1 否決；體驗增益 − 核心效用 ≥ 4 則改判「櫝重於珠」。</div>';
+  $("#sliders").addEventListener("input",function(e){
+    var r=e.target.closest("input[type=range]"); if(!r)return;
+    var i=+r.dataset.i; vals[i]=parseFloat(r.value);
+    $("#v"+i).textContent=vals[i];
+    tween(); evaluate();
+  });
+})();
+$("#presets").innerHTML=Object.keys(PRESETS).map(function(k){
+  return '<button class="preset" data-p="'+k+'">'+k+'</button>';
+}).join("");
+$("#presets").addEventListener("click",function(e){
+  var b=e.target.closest(".preset"); if(!b)return;
+  var arr=PRESETS[b.dataset.p];
+  arr.forEach(function(v,i){
+    vals[i]=v; $("#v"+i).textContent=v;
+    var inp=$('input[data-i="'+i+'"]'); if(inp)inp.value=v;
+  });
+  tween(); evaluate();
+});
+$("#saveCalc").addEventListener("click",function(){
+  grant("calc"); this.textContent="已蓋「算」印 · 可繼續調整";
+});
+drawRadar(); evaluate();
+
+/* =========================================================
+   思辨投票
+========================================================= */
+(function(){
+  $("#voteBox").innerHTML=VOTES.map(function(v,vi){
+    return '<div class="vote-item reveal" data-v="'+vi+'"><h4>'+(vi+1)+'. '+v.q+'</h4><div class="vote-opts">'+
+      v.opts.map(function(o,oi){
+        return '<div class="vopt" data-o="'+oi+'"><span class="bar"></span>'+
+               '<span class="txt"><span>'+o.t+'</span><span class="pct">0%</span></span></div>';
+      }).join("")+'</div>'+
+      '<div class="debate-out"><div class="inner">'+
+        '<div class="arg pro"><h5>正方論點</h5><ul>'+v.pro.map(function(x){return '<li>'+x+'</li>';}).join("")+'</ul></div>'+
+        '<div class="arg con"><h5>反方論點</h5><ul>'+v.con.map(function(x){return '<li>'+x+'</li>';}).join("")+'</ul></div>'+
+      '</div></div><p class="hint" style="margin-bottom:0">▸ 點選任一立場，即顯示票數分布與正反論點對照。</p></div>';
+  }).join("");
+
+  $("#voteBox").addEventListener("click",function(e){
+    var op=e.target.closest(".vopt"); if(!op)return;
+    var item=op.closest(".vote-item");
+    if(item.classList.contains("voted"))return;
+    var vi=+item.dataset.v, oi=+op.dataset.o, data=VOTES[vi];
+    data.opts[oi].v+=1;
+    var total=data.opts.reduce(function(s,o){return s+o.v;},0);
+    item.classList.add("voted");
+    $$(".vopt",item).forEach(function(el,i){
+      var p=Math.round(data.opts[i].v/total*100);
+      $(".bar",el).style.width=p+"%";
+      $(".pct",el).textContent=p+"%";
+      if(i===oi)el.classList.add("mine");
+    });
+    openPanel($(".debate-out",item));
+    var h=$(".hint",item); if(h)h.style.display="none";
+    grant("vote");
+  });
+})();
+
+/* =========================================================
+   測驗
+========================================================= */
+var answers=new Array(QUIZ.length).fill(null), submitted=false;
+function renderQuiz(){
+  $("#quizBox").innerHTML=QUIZ.map(function(q,i){
+    return '<div class="quiz-q reveal" data-q="'+i+'"><div class="qt"><em>'+(i+1)+'.</em>'+q.q+'</div>'+
+      q.o.map(function(t,oi){
+        return '<div class="opt" data-o="'+oi+'"><span class="k">'+"ABCD"[oi]+'</span><span>'+t+'</span></div>';
+      }).join("")+
+      '<div class="expl" id="ex'+i+'"><b style="color:var(--cinnabar-d)">正解：'+"ABCD"[q.a]+'</b> ｜ '+q.e+'</div></div>';
+  }).join("");
+}
+renderQuiz();
+$("#quizBox").addEventListener("click",function(e){
+  var op=e.target.closest(".opt"); if(!op||submitted)return;
+  var box=op.closest(".quiz-q"), qi=+box.dataset.q;
+  $$(".opt",box).forEach(function(x){x.classList.remove("sel");});
+  op.classList.add("sel"); answers[qi]=+op.dataset.o;
+});
+$("#submitQuiz").addEventListener("click",function(){
+  if(submitted)return;
+  var un=answers.filter(function(a){return a===null;}).length;
+  if(un>0){ alert("尚有 "+un+" 題未作答，完成後才能交卷。"); return; }
+  submitted=true; var right=0;
+  QUIZ.forEach(function(q,i){
+    var box=$('.quiz-q[data-q="'+i+'"]'), opts=$$(".opt",box);
+    opts.forEach(function(o,oi){
+      o.style.cursor="default";
+      if(oi===q.a)o.classList.add("right");
+      else if(oi===answers[i])o.classList.add("wrong");
+    });
+    if(answers[i]===q.a)right++;
+    $("#ex"+i).classList.add("show");
+  });
+  $("#finalScore").textContent=right+" / "+QUIZ.length;
+  var msg = right===QUIZ.length ? "滿分！你已能自如運用「櫝珠之辨」分析任何商業個案。"
+    : right>=6 ? "優良。已掌握三要件與三層架構，可再複習答錯的題目。"
+    : right>=4 ? "及格。建議回到問一至問三，重新整理「排擠・認知・事後」與「L1・L2・L3」。"
+    : "再讀一遍卷軸與三問，你會發現韓非其實非常現代。";
+  $("#finalMsg").textContent=msg;
+  $("#scoreBoard").classList.add("show");
+  $("#scoreBoard").scrollIntoView({behavior:"smooth",block:"center"});
+  grant("quiz");
+});
+$("#resetQuiz").addEventListener("click",function(){
+  answers=new Array(QUIZ.length).fill(null); submitted=false;
+  $("#scoreBoard").classList.remove("show");
+  renderQuiz(); revealAll();
+  $("#quiz").scrollIntoView({behavior:"smooth",block:"start"});
+});
+
+/* =========================================================
+   顯現、進度、導航
+========================================================= */
+var io=null;
+function revealAll(){
+  var items=$$(".reveal:not(.in)");
+  if("IntersectionObserver" in window){
+    if(io)io.disconnect();
+    io=new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    },{threshold:0,rootMargin:"0px 0px -6% 0px"});
+    items.forEach(function(el){io.observe(el);});
+  }else{
+    items.forEach(function(el){el.classList.add("in");});
+  }
+  fallbackCheck();
+}
+/* 保險機制：以捲動位置直接判定，避免高度過大元素永不觸發 */
+function fallbackCheck(){
+  var vh=window.innerHeight||document.documentElement.clientHeight;
+  $$(".reveal:not(.in)").forEach(function(el){
+    var r=el.getBoundingClientRect();
+    if(r.top < vh*0.98 && r.bottom > -vh) el.classList.add("in");
+  });
+}
+revealAll();
+window.addEventListener("scroll",function(){
+  var h=document.documentElement;
+  var p=h.scrollTop/Math.max(1,(h.scrollHeight-h.clientHeight))*100;
+  $("#progress").style.width=p+"%";
+  $("#totop").classList.toggle("show",h.scrollTop>700);
+  fallbackCheck();
+},{passive:true});
+window.addEventListener("load",function(){ revealAll(); refreshPanels(); });
+window.addEventListener("resize",function(){ refreshPanels(); fallbackCheck(); });
+if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(function(){ refreshPanels(); fallbackCheck(); }); }
+
+var navMap={};
+$$("#navlinks a").forEach(function(a){ navMap[a.getAttribute("href").slice(1)]=a; });
+var spy=null;
+(function startSpy(){
+  var secs=["yuanwen","gainian","q1","q2","q3","cases","calc","debate","quiz","final"]
+    .map(function(id){return document.getElementById(id);}).filter(Boolean);
+  if(!("IntersectionObserver" in window))return;
+  spy=new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if(en.isIntersecting){
+        $$("#navlinks a").forEach(function(a){a.classList.remove("active");});
+        var a=navMap[en.target.id]; if(a)a.classList.add("active");
+      }
+    });
+  },{threshold:0,rootMargin:"-45% 0px -50% 0px"});
+  secs.forEach(function(s){spy.observe(s);});
+})();
+
+$("#totop").addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});
+
+/* 字級 */
+var fs=16;
+function setFs(n){
+  fs=Math.max(13,Math.min(21,n));
+  document.documentElement.style.setProperty("--fs",fs+"px");
+  refreshPanels();
+}
+$("#fup").addEventListener("click",function(){setFs(fs+1);});
+$("#fdown").addEventListener("click",function(){setFs(fs-1);});
+
+/* 行動導覽 */
+$("#burger").addEventListener("click",function(){$("#navlinks").classList.toggle("open");});
+$$("#navlinks a").forEach(function(a){
+  a.addEventListener("click",function(){$("#navlinks").classList.remove("open");});
+});
+</script>
+</body>
+</html>
